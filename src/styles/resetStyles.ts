@@ -17,7 +17,6 @@ nav, section{
     
 }
 
-
 ol, ul {
     list-style: none;
 }
@@ -43,6 +42,10 @@ input::placeholder{
 
 html {
     scroll-behavior: smooth;
+}
+
+* {
+    font-family: 'Inter', sans-serif;
 }
 
 `;

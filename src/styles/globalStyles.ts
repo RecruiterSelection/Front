@@ -16,6 +16,8 @@ export const GlobalStyle = createGlobalStyle`
         --grey--scale--grey-9: rgba(248, 249, 250, 1);
         --grey--scale--grey-10: rgba(253, 253, 253, 1);
         
+        --white-fixed: rgba(255, 255, 255, 1);
+        
         --feedback--alert-1: rgba(205, 43, 49, 1);
         --feedback--alert-2: rgba(253, 216, 216, 1);
         --feedback--alert-3: rgba(255, 229, 229, 1);
@@ -36,12 +38,11 @@ export const GlobalStyle = createGlobalStyle`
         --random--random11: rgba(87, 0, 227, 1);
         --random--random12: rgba(48, 0, 125, 1);
 
-        --brand--brand1: rgba(69, 41, 230, 1);
-        --brand--brand2: rgba(81, 38, 234, 1);
-        --brand--brand3: rgba(176, 166, 240, 1);
-        --brand--brand4: rgba(237, 234, 253, 1);
+        --brand--brand1: rgba(75, 140, 232, 1);
+        --brand--brand2: rgba(35, 92, 189, 1);
+        --brand--brand3: rgba(42, 131, 254, 1);
+        --brand--brand4: rgba(12, 21, 88, 1);
         
-        --colors--fixed--white-fixed: rgba(255, 255, 255, 1);
         /* Text-size styles */
         --heading---heading-1-700: 44px;
         --heading---heading-2-600: 36px;
