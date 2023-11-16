@@ -1,11 +1,13 @@
 import { ToastContainer } from "react-toastify";
 import { RoutesMain } from "./routes";
 import { GlobalStyle } from "./styles/globalStyles";
+import { ResetStyle } from "./styles/resetStyles";
 
 export const App = () => {
   return (
     <>
       <GlobalStyle />
+      <ResetStyle />
       <RoutesMain />
       <ToastContainer
         position="top-right"
