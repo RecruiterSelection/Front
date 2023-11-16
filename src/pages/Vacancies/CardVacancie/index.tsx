@@ -20,6 +20,7 @@ export const CardVacancie = ({ vacancie }: IVacancieProps) => {
         <h2>Requisitos</h2>
         <span>{vacancie.requireds}</span>
       </div>
+      <button type="button">Ver detalhes</button>
     </CardStyled>
   );
 };

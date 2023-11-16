@@ -16,4 +16,18 @@ export const CardStyled = styled.li`
     display: block;
     padding: 2px 0px;
   }
+
+  button {
+    margin-top: 10px;
+    padding: 15px 45px;
+    border-radius: 12px;
+    border: none;
+    opacity: 0.9;
+    background-color: var(--random--random-1);
+    color: white;
+  }
+
+  button:hover {
+    opacity: 1;
+  }
 `;
