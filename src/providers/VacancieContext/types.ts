@@ -1,7 +1,5 @@
-import { string } from "zod";
-
 export interface IVacanciesContext {
-  Vacancies: any;
+  vacancies: any;
   SetVacancies: React.Dispatch<React.SetStateAction<any>>;
 }
 

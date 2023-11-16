@@ -43,10 +43,10 @@ const vacancie = [
 ];
 
 export const VacancieProvider = ({ children }: IProviderProps) => {
-  const [Vacancies, SetVacancies] = useState([...vacancie]);
+  const [vacancies, SetVacancies] = useState([...vacancie]);
 
   return (
-    <VacancieContext.Provider value={{ Vacancies, SetVacancies }}>
+    <VacancieContext.Provider value={{ vacancies, SetVacancies }}>
       {children}
     </VacancieContext.Provider>
   );

@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { VacancieContext } from "../../providers/VacancieContext";
 
 export const VacanciesPage = () => {
-  const { Vacancies } = useContext(VacancieContext);
+  const { vacancies } = useContext(VacancieContext);
 
   return (
     <>
@@ -18,7 +18,7 @@ export const VacanciesPage = () => {
           <button type="submit">Pesquisar</button>
         </form>
         <ul>
-          {Vacancies.map((vacancie: any) => (
+          {vacancies.map((vacancie: any) => (
             <CardVacancie vacancie={vacancie} />
           ))}
         </ul>
