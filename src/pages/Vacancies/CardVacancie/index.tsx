@@ -1,30 +1,24 @@
 import { CardStyled } from "./style";
+// title, type, time, Description, requireds
 
-export const CardVacancie = () => {
+interface IVacancieProps {
+  vacancie: any;
+}
+export const CardVacancie = ({ vacancie }: IVacancieProps) => {
   return (
     <CardStyled>
       <div>
-        <h2>Desenvolvedor Full Stack</h2>
-        <span>Tempo integral</span>
-        <span>Remoto</span>
+        <h2>{vacancie.title}</h2>
+        <span>{vacancie.time}</span>
+        <span>{vacancie.type}</span>
       </div>
       <div>
         <h2>Descrição</h2>
-        <span>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora
-          nisi, ab voluptatum id consectetur temporibus cupiditate ea maxime
-          incidunt suscipit pariatur fugiat nemo culpa earum repudiandae
-          adipisci repellendus odio? Quam?
-        </span>
+        <span>{vacancie.description}</span>
       </div>
       <div>
         <h2>Requisitos</h2>
-        <span>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi
-          exercitationem accusantium ea molestias eius rem nam corporis maxime
-          perferendis. Quisquam incidunt quo quidem! Delectus at praesentium
-          dolorem, aperiam officiis repudiandae.
-        </span>
+        <span>{vacancie.requireds}</span>
       </div>
     </CardStyled>
   );

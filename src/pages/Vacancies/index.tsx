@@ -2,8 +2,12 @@ import { HeaderComponents } from "../../components/Header";
 import { CardVacancie } from "./CardVacancie";
 import { VacanciesStyle } from "./style";
 import { IoSearch } from "react-icons/io5";
+import { useContext } from "react";
+import { VacancieContext } from "../../providers/VacancieContext";
 
 export const VacanciesPage = () => {
+  const { Vacancies } = useContext(VacancieContext);
+
   return (
     <>
       <HeaderComponents />
@@ -14,10 +18,9 @@ export const VacanciesPage = () => {
           <button type="submit">Pesquisar</button>
         </form>
         <ul>
-          <CardVacancie />
-          <CardVacancie />
-          <CardVacancie />
-          <CardVacancie />
+          {Vacancies.map((vacancie: any) => (
+            <CardVacancie vacancie={vacancie} />
+          ))}
         </ul>
       </VacanciesStyle>
     </>
