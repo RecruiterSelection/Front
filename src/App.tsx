@@ -2,10 +2,11 @@ import { ToastContainer } from "react-toastify";
 import { RoutesMain } from "./routes";
 import { GlobalStyle } from "./styles/globalStyles";
 import { ResetStyle } from "./styles/resetStyles";
+import { UserProvider } from "./providers/user/userProvider";
 
 export const App = () => {
   return (
-    <>
+    <UserProvider>
       <GlobalStyle />
       <ResetStyle />
       <RoutesMain />
@@ -22,6 +23,6 @@ export const App = () => {
         pauseOnHover
         theme="light"
       />
-    </>
+    </UserProvider>
   );
 };
