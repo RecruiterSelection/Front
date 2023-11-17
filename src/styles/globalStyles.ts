@@ -25,9 +25,11 @@ export const GlobalStyle = createGlobalStyle`
         --feedback--sucess-2: rgba(204, 235, 215, 1);
         --feedback--sucess-3: rgba(221, 243, 228, 1);
         
-        --random--random-1: rgba(227, 77, 140, 1);
-        --random--random-2: rgba(192, 66, 119, 1);
-        --random--random-3: rgba(125, 42, 77, 1);
+        --random--random-1: rgba(255, 86, 146, 1);
+        --random--random-2: rgba(227, 77, 140, 1);
+        --random--random-3: rgba(192, 66, 119, 1);
+        --random--random-4: rgba(125, 42, 77, 1);
+
         --random--random4: rgba(112, 0, 255, 1);
         --random--random5: rgba(98, 0, 227, 1);
         --random--random6: rgba(54, 0, 125, 1);
@@ -61,10 +63,10 @@ export const GlobalStyle = createGlobalStyle`
         --inputs--buttons--input-placeholder: 16px;
         --inputs--buttons--button-big-text: 16px;
         
-        --text--body-1-400: 16px;
-        --text--body-1-600: 16px;
-        --text--body-2-400: 14px;
-        --text--body-2-500: 14px;
+        --text--body0: 0.75rem; //12px
+        --text--body1: 1rem; //16px
+        --text--body2: 2rem; //32px
+        --text--body3: 3rem; //48px
 
     }
 

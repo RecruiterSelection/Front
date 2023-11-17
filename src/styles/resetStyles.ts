@@ -14,6 +14,7 @@ nav, section{
     font-size: 100%;
     vertical-align: baseline;
     text-decoration: none;
+    box-sizing: border-box;
     
 }
 

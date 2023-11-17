@@ -53,7 +53,7 @@ export const NavStyled = styled.nav<NavStyledProps>`
     color: var(--white-fixed);
     cursor: pointer;
 
-    &:nth-child(3) {
+    &:nth-child(4) {
       background-color: var(--brand--brand2);
       padding: 5px;
       border-radius: 5px;
@@ -67,7 +67,7 @@ export const NavStyled = styled.nav<NavStyledProps>`
   }
 
   @media (min-width: 1024px) {
-    width: 30%;
+    width: 40%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

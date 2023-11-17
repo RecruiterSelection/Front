@@ -17,6 +17,7 @@ export const HeaderComponents = () => {
       </LogoLinkStyled>
       <RiMenuFill onClick={toggleMenu} className="mobile" />
       <NavStyled isVisible={menuIsVisible}>
+        <button>VAGAS</button>
         <button>SOBRE NÓS</button>
         <button>CONTATO</button>
         <button>ENTRAR</button>
