@@ -1,5 +1,5 @@
-import { UseFormRegisterReturn } from 'react-hook-form';
-import { FieldStyled } from './style';
+import { UseFormRegisterReturn } from "react-hook-form";
+import { FieldStyled } from "./style";
 
 export interface IInput {
   label?: string;
@@ -8,21 +8,11 @@ export interface IInput {
   placeholder: string;
 }
 
-export const Input = ({
-  label,
-  type,
-  register,
-  placeholder
-}: IInput) => {
-
+export const Input = ({ label, type, register, placeholder }: IInput) => {
   return (
     <FieldStyled>
       <label htmlFor={register.name}>{label}</label>
-      <input
-        type={type}
-        placeholder={placeholder}
-        {...register}
-      />
+      <input type={type} placeholder={placeholder} {...register} />
     </FieldStyled>
   );
 };

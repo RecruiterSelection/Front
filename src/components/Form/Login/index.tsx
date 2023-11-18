@@ -40,7 +40,9 @@ export const LoginForm = ({ closeModal }: { closeModal: () => void }) => {
         placeholder="Digitar senha"
         register={register("password")}
       />
-      {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
+      {errors.password && (
+        <ErrorMessage>{errors.password.message}</ErrorMessage>
+      )}
       <Link to="">Esqueci minha senha</Link>
       <ButtonStyled type="submit">Entrar</ButtonStyled>
       <p>Ainda não possui conta?</p>

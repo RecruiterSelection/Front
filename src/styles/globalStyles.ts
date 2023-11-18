@@ -2,6 +2,11 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
+    body{
+        background-color: var(--brand--brand1);
+        color: white;
+    }
+
     :root{
 
         --grey--scale--grey-0: rgba(11, 13, 13, 1);
