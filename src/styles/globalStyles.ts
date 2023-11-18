@@ -2,6 +2,11 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
+    body{
+        background-color: var(--brand--brand1);
+        color: white;
+    }
+
     :root{
 
         --grey--scale--grey-0: rgba(11, 13, 13, 1);
@@ -16,6 +21,8 @@ export const GlobalStyle = createGlobalStyle`
         --grey--scale--grey-9: rgba(248, 249, 250, 1);
         --grey--scale--grey-10: rgba(253, 253, 253, 1);
         
+        --white-fixed: rgba(255, 255, 255, 1);
+        
         --feedback--alert-1: rgba(205, 43, 49, 1);
         --feedback--alert-2: rgba(253, 216, 216, 1);
         --feedback--alert-3: rgba(255, 229, 229, 1);
@@ -23,9 +30,11 @@ export const GlobalStyle = createGlobalStyle`
         --feedback--sucess-2: rgba(204, 235, 215, 1);
         --feedback--sucess-3: rgba(221, 243, 228, 1);
         
-        --random--random-1: rgba(227, 77, 140, 1);
-        --random--random-2: rgba(192, 66, 119, 1);
-        --random--random-3: rgba(125, 42, 77, 1);
+        --random--random-1: rgba(255, 86, 146, 1);
+        --random--random-2: rgba(227, 77, 140, 1);
+        --random--random-3: rgba(192, 66, 119, 1);
+        --random--random-4: rgba(125, 42, 77, 1);
+
         --random--random4: rgba(112, 0, 255, 1);
         --random--random5: rgba(98, 0, 227, 1);
         --random--random6: rgba(54, 0, 125, 1);
@@ -36,12 +45,11 @@ export const GlobalStyle = createGlobalStyle`
         --random--random11: rgba(87, 0, 227, 1);
         --random--random12: rgba(48, 0, 125, 1);
 
-        --brand--brand1: rgba(69, 41, 230, 1);
-        --brand--brand2: rgba(81, 38, 234, 1);
-        --brand--brand3: rgba(176, 166, 240, 1);
-        --brand--brand4: rgba(237, 234, 253, 1);
+        --brand--brand1: rgba(75, 140, 232, 1);
+        --brand--brand2: rgba(35, 92, 189, 1);
+        --brand--brand3: rgba(42, 131, 254, 1);
+        --brand--brand4: rgba(12, 21, 88, 1);
         
-        --colors--fixed--white-fixed: rgba(255, 255, 255, 1);
         /* Text-size styles */
         --heading---heading-1-700: 44px;
         --heading---heading-2-600: 36px;
@@ -60,10 +68,12 @@ export const GlobalStyle = createGlobalStyle`
         --inputs--buttons--input-placeholder: 16px;
         --inputs--buttons--button-big-text: 16px;
         
-        --text--body-1-400: 16px;
-        --text--body-1-600: 16px;
-        --text--body-2-400: 14px;
-        --text--body-2-500: 14px;
+        --text--body0: 0.75rem; //12px
+        --text--body1: 1rem; //16px
+        --text--body2: 2rem; //32px
+        --text--body3: 3rem; //48px
+        --text--body4: 1.5rem; //24px
+        --text--body5: 0.875; //14px
 
     }
 

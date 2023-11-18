@@ -14,9 +14,9 @@ nav, section{
     font-size: 100%;
     vertical-align: baseline;
     text-decoration: none;
+    box-sizing: border-box;
     
 }
-
 
 ol, ul {
     list-style: none;
@@ -43,6 +43,10 @@ input::placeholder{
 
 html {
     scroll-behavior: smooth;
+}
+
+* {
+    font-family: 'Inter', sans-serif;
 }
 
 `;
