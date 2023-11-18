@@ -67,6 +67,8 @@ export const GlobalStyle = createGlobalStyle`
         --text--body1: 1rem; //16px
         --text--body2: 2rem; //32px
         --text--body3: 3rem; //48px
+        --text--body4: 1.5rem; //24px
+        --text--body5: 0.875; //14px
 
     }
 
