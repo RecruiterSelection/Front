@@ -1,24 +1,22 @@
 import logo from "../../assets/logo.png";
-import { LoginModal } from "../Modais/login";
+import { LoginForm } from "../../pages/LoginPage/loginForm";
+import { ModalContext } from "../../providers/modal";
+import { GenericModal } from "../Modal";
 import { HeaderContainerStyled, LogoLinkStyled, NavStyled } from "./style";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { RiMenuFill } from "react-icons/ri";
 
 export const HeaderComponents = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
-  const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const {modalOpen, openModal, closeModal} = useContext(ModalContext)
 
   const toggleMenu = () => {
     setMenuIsVisible(!menuIsVisible);
   };
 
-  const openLoginModal = () => {
-    setLoginModalOpen(true);
-  };
-
-  const closeLoginModal = () => {
-    setLoginModalOpen(false);
-  };
+  const handleOpenModal = () => {
+    openModal('login');
+  }
 
   return (
     <HeaderContainerStyled>
@@ -30,10 +28,12 @@ export const HeaderComponents = () => {
         <button>VAGAS</button>
         <button>SOBRE NÓS</button>
         <button>CONTATO</button>
-        <button onClick={openLoginModal}>ENTRAR</button>
+        <button onClick={handleOpenModal}>ENTRAR</button>
       </NavStyled>
 
-      <LoginModal open={loginModalOpen} onClose={closeLoginModal} />
+      <GenericModal open={modalOpen === 'login'} onClose={closeModal}>
+        <LoginForm />
+      </GenericModal>
     </HeaderContainerStyled>
   );
 };
