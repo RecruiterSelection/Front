@@ -10,6 +10,7 @@ export const FieldStyled = styled.fieldset`
   label {
     font-size: var(--text--body5);
     font-weight: 500;
+    color: var(--grey--scale--grey-0);
   }
 
   input {

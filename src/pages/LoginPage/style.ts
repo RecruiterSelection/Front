@@ -10,6 +10,7 @@ export const FormStyled = styled.form`
     font-weight: 500;
     align-self: flex-start;
     margin-bottom: 20px;
+    color: var(--grey--scale--grey-0);
   }
 
   a {
@@ -21,6 +22,7 @@ export const FormStyled = styled.form`
 
   p {
     font-size: var(--text--body5);
+    color: var(--grey--scale--grey-0);
   }
 `;
 
