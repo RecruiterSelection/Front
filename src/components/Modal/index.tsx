@@ -11,7 +11,11 @@ const BlurredBackdrop = styled(Backdrop)`
   backdrop-filter: blur(5px);
 `;
 
-export const GenericModal: React.FC<ModalProps> = ({ open, onClose, children }) => {
+export const GenericModal: React.FC<ModalProps> = ({
+  open,
+  onClose,
+  children,
+}) => {
   return (
     <Modal open={open} onClose={onClose} BackdropComponent={BlurredBackdrop}>
       <Box

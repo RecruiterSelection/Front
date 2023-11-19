@@ -1,6 +1,10 @@
 export interface IVacanciesContext {
   vacancies: any;
   SetVacancies: React.Dispatch<React.SetStateAction<any>>;
+  createVacancie: any;
+  getVacancie: any;
+  updateVacancie: any;
+  deleteVacancie: any;
 }
 
 export interface IProviderProps {

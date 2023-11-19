@@ -3,6 +3,7 @@ import { HomePage } from "../pages/HomePage";
 import { DashBoardPage } from "../pages/DashBoardPage";
 import { VacanciesPage } from "../pages/Vacancies";
 import { AboutUsPage } from "../pages/AboutUs";
+import { PerfilPage } from "../pages/PerfilPage";
 
 export const RoutesMain = () => {
   return (
@@ -11,6 +12,7 @@ export const RoutesMain = () => {
       <Route path="/AboutUs" element={<AboutUsPage />} />
       <Route path="/DashBoard" element={<DashBoardPage />} />
       <Route path="/Vacancies" element={<VacanciesPage />} />
+      <Route path="/perfil" element={<PerfilPage />} />
     </Routes>
   );
 };

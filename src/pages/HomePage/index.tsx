@@ -4,6 +4,7 @@ import { ContainerButton, ContainerPhrase, MainStyled, SectionStyled } from "./s
 import { ModalContext } from "../../providers/modal";
 import { useContext } from "react"
 
+
 export const HomePage = () => {
   const {openModal} = useContext(ModalContext)
 
