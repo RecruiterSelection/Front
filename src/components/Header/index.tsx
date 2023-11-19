@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { LoginForm } from "../../pages/LoginPage/loginForm";
 import { ModalContext } from "../../providers/modal";
@@ -26,7 +27,7 @@ export const HeaderComponents = () => {
       <RiMenuFill onClick={toggleMenu} className="mobile" />
       <NavStyled isVisible={menuIsVisible}>
         <button>VAGAS</button>
-        <button>SOBRE NÓS</button>
+        <Link to={"/AboutUs"}>SOBRE NÓS</Link>
         <button>CONTATO</button>
         <button onClick={handleOpenModal}>ENTRAR</button>
       </NavStyled>

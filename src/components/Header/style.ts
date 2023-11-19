@@ -42,6 +42,7 @@ export const NavStyled = styled.nav<NavStyledProps>`
   background-color: var(--brand--brand1);
   display: ${({ isVisible }) => (isVisible ? "flex" : "none")};
   flex-direction: column;
+  align-items: center;
   position: absolute;
   top: 67px;
   left: 0;
@@ -49,20 +50,37 @@ export const NavStyled = styled.nav<NavStyledProps>`
   gap: 10px;
   padding: 10px;
 
+  a {
+    color: var(--white-fixed);
+    font-size: var(--text--body0);
+    transition: transform 0.3s;
+    
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+
   button {
+    font-size: var(--text--body0);
     color: var(--white-fixed);
     cursor: pointer;
+    transition: transform 0.3s;
 
-    &:nth-child(4) {
+    &:nth-of-type(3) {
       background-color: var(--brand--brand2);
       padding: 5px;
       border-radius: 5px;
       width: 30%;
       align-self: center;
 
-      :hover {
-        background-color: var(--white-fixed);
+      &:hover {
+        transform: scale(1);
+        background-color: var(--brand--brand4);
       }
+    }
+
+    &:hover {
+      transform: scale(1.5);
     }
   }
 

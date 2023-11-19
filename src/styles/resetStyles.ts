@@ -18,6 +18,10 @@ nav, section{
     
 }
 
+body {
+    background-color: var(--brand--brand1);
+}
+
 ol, ul {
     list-style: none;
 }
