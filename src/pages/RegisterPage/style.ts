@@ -10,12 +10,14 @@ export const FormStyled = styled.form`
     font-weight: 500;
     align-self: flex-start;
     margin-bottom: 20px;
+    color: var(--grey--scale--grey-0);
   }
 
   button {
     width: 100%;
-    padding: 5px 20px;
+    padding: 10px 20px;
     margin-top: 25px;
+    margin-bottom: 10px;
     font-size: var(--text--body1);
     font-weight: 600;
     color: var(--white-fixed);
@@ -35,6 +37,7 @@ export const DivInput = styled.div`
   p {
     font-size: var(--text--body5);
     font-weight: 500;
+    color: var(--grey--scale--grey-0);
   }
 `;
 
@@ -48,7 +51,7 @@ export const DivInputRadio = styled.div`
     color: var(--white-fixed);
     background-color: var(--brand--brand1);
     border-radius: 4px;
-    padding: 5px 20px;
+    padding: 10px 20px;
   }
 
   input[type="radio"] {
@@ -60,7 +63,7 @@ export const DivInputRadio = styled.div`
     background-color: var(--random--random-1);
     color: var(--white-fixed);
     border-radius: 4px;
-    padding: 5px 20px;
+    padding: 10px 20px;
   }
 `;
 
