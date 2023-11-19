@@ -10,7 +10,7 @@ const BlurredBackdrop = styled(Backdrop)`
   backdrop-filter: blur(5px);
 `;
 
-export const LoginModal : React.FC<LoginModalProps> = ({ open, onClose }) => {
+export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
   return (
     <Modal open={open} onClose={onClose} BackdropComponent={BlurredBackdrop}>
       <Box

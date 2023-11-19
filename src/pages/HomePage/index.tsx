@@ -1,6 +1,11 @@
 import { HeaderComponents } from "../../components/Header";
 import home from "../../assets/home.svg";
-import { ContainerButton, ContainerPhrase, MainStyled, SectionStyled } from "./style";
+import {
+  ContainerButton,
+  ContainerPhrase,
+  MainStyled,
+  SectionStyled,
+} from "./style";
 
 export const HomePage = () => {
   return (
