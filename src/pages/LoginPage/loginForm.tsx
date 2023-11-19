@@ -1,15 +1,19 @@
 import { useContext } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { formSchema } from "./formSchema";
-import { UserContext } from "../../../providers/user/userProvider";
-import { ILoginUser } from "../../../providers/user/interface";
+import { formSchema } from "../../schemas/loginSchema";
+import { UserContext } from "../../providers/user/userProvider";
+import { ILoginUser } from "../../providers/user/interface";
 import { ButtonStyled, ErrorMessage, FormStyled } from "./style";
 import { Link } from "react-router-dom";
-import { Input } from "../../Input";
+import { Input } from "../../components/Input";
+import { GenericModal } from "../../components/Modal";
+import { RegisterForm } from "../RegisterPage";
+import { ModalContext } from "../../providers/modal";
 
-export const LoginForm = ({ closeModal }: { closeModal: () => void }) => {
+export const LoginForm = () => {
   const { loginUser } = useContext(UserContext);
+  const { modalOpen, openModal, closeModal } = useContext(ModalContext);
 
   const {
     register,
@@ -21,7 +25,11 @@ export const LoginForm = ({ closeModal }: { closeModal: () => void }) => {
 
   const submit: SubmitHandler<ILoginUser> = (data) => {
     loginUser(data);
-    closeModal();
+    closeModal()
+  };
+
+  const handleOpenModal = () => {
+    openModal("register");
   };
 
   return (
@@ -46,7 +54,13 @@ export const LoginForm = ({ closeModal }: { closeModal: () => void }) => {
       <Link to="">Esqueci minha senha</Link>
       <ButtonStyled type="submit">Entrar</ButtonStyled>
       <p>Ainda não possui conta?</p>
-      <ButtonStyled type="button">Cadastrar</ButtonStyled>
+      <ButtonStyled type="button" onClick={handleOpenModal}>
+        Cadastrar
+      </ButtonStyled>
+
+      <GenericModal open={modalOpen === "register"} onClose={closeModal}>
+        <RegisterForm />
+      </GenericModal>
     </FormStyled>
   );
 };

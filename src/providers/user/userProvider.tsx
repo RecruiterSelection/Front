@@ -24,6 +24,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       .post("/users", data)
       .then((res) => {
         setUser(res.data);
+
         toast.success("Perfil criado com succeso!");
       })
       .catch((err) => console.error(err));

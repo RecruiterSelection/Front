@@ -1,13 +1,17 @@
 import { HeaderComponents } from "../../components/Header";
 import home from "../../assets/home.svg";
-import {
-  ContainerButton,
-  ContainerPhrase,
-  MainStyled,
-  SectionStyled,
-} from "./style";
+import { ContainerButton, ContainerPhrase, MainStyled, SectionStyled } from "./style";
+import { ModalContext } from "../../providers/modal";
+import { useContext } from "react"
+
 
 export const HomePage = () => {
+  const {openModal} = useContext(ModalContext)
+
+  const handleOpenModal = () => {
+    openModal('login');
+  }
+
   return (
     <>
       <HeaderComponents />
@@ -19,7 +23,7 @@ export const HomePage = () => {
             <p>as melhores vagas e faça sua carreira decolar</p>
           </ContainerPhrase>
           <ContainerButton>
-            <button>ENTRAR</button>
+          <button onClick={handleOpenModal}>ENTRAR</button>
           </ContainerButton>
         </SectionStyled>
       </MainStyled>

@@ -13,9 +13,9 @@ export interface ILoginUser{
 }
 
 export interface IRegisterUser{
-  name: string;
   email: string;
   password: string
+  account_type: string;
 }
 
 export interface IUserContext {

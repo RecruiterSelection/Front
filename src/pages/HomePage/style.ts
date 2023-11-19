@@ -5,8 +5,8 @@ export const MainStyled = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
   overflow: auto;
+  padding-bottom: 50px;
 
   img {
     height: 355px;
@@ -17,7 +17,7 @@ export const MainStyled = styled.main`
     justify-content: space-around;
 
     img {
-      height: auto;
+      height: 550px;
     }
   }
 `;

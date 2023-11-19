@@ -1,16 +1,21 @@
 import { Backdrop, Box, Modal, styled } from "@mui/material";
-import { LoginForm } from "../../Form/Login";
+import React, { ReactNode } from "react";
 
-interface LoginModalProps {
+interface ModalProps {
   open: boolean;
   onClose: () => void;
+  children: ReactNode;
 }
 
 const BlurredBackdrop = styled(Backdrop)`
   backdrop-filter: blur(5px);
 `;
 
-export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
+export const GenericModal: React.FC<ModalProps> = ({
+  open,
+  onClose,
+  children,
+}) => {
   return (
     <Modal open={open} onClose={onClose} BackdropComponent={BlurredBackdrop}>
       <Box
@@ -24,7 +29,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }) => {
           transform: "translate(-50%, -50%)",
         }}
       >
-        <LoginForm closeModal={onClose} />
+        {children}
       </Box>
     </Modal>
   );
