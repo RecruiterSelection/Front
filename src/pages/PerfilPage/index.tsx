@@ -1,19 +1,22 @@
 import { HeaderComponents } from "../../components/Header";
 import { Select } from "../../components/select";
-import { PerfilStyled } from "./style";
+import { ContaiderPerfilStyled, PerfilStyled } from "./style";
 import { FaPencil } from "react-icons/fa6";
 import { CgAdd } from "react-icons/cg";
+import { FormPerfilCandidate } from "../../components/Forms/Perfil/PerfilCandidate";
 
 export const PerfilPage = () => {
   return (
     <>
       <HeaderComponents />
-      <main>
-        <PerfilStyled>
+      <ContaiderPerfilStyled>
+        <FormPerfilCandidate />
+
+        {/* <PerfilStyled>
           <div>
             <img
               src="https://avatars.githubusercontent.com/u/109912589?v=4"
-              alt="teste"
+              alt="imgPerfil"
             />
             <span>Name</span>
             <span>Função</span>
@@ -83,8 +86,8 @@ export const PerfilPage = () => {
               <button type="button">{<FaPencil size="16" />}</button>
             </div>
           </div>
-        </PerfilStyled>
-      </main>
+        </PerfilStyled> */}
+      </ContaiderPerfilStyled>
     </>
   );
 };

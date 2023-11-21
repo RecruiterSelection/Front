@@ -1,5 +1,33 @@
 import styled from "styled-components";
 
+export const ContaiderPerfilStyled = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > form {
+    padding: 20px 15px;
+    border-radius: 8px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-self: center;
+    background-color: white;
+    border: 1px solid;
+
+    fieldset {
+      box-sizing: border-box;
+    }
+
+    button {
+      margin: 15px 10px;
+      font-size: 18px;
+      padding: 15px;
+    }
+  }
+`;
+
 export const PerfilStyled = styled.form`
   display: flex;
   flex-direction: column;
@@ -46,9 +74,9 @@ export const PerfilStyled = styled.form`
   }
 
   img {
-    background-color: blue;
     width: 150px;
     border-radius: 50%;
+    border: 1px solid;
   }
 
   button {
