@@ -54,7 +54,7 @@ export const NavStyled = styled.nav<NavStyledProps>`
     color: var(--white-fixed);
     font-size: var(--text--body0);
     transition: transform 0.3s;
-    
+
     &:hover {
       transform: scale(1.5);
     }
@@ -70,7 +70,7 @@ export const NavStyled = styled.nav<NavStyledProps>`
       background-color: var(--brand--brand2);
       padding: 5px;
       border-radius: 5px;
-      width: 30%;
+      width: 20%;
       align-self: center;
 
       &:hover {

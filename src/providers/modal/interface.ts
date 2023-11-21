@@ -1,7 +1,8 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface IModalContext {
-  modalOpen: string | null;
-  openModal: (modalName: string) => void;
-  closeModal: () => void;
+  modalOpen: JSX.Element | null;
+  setModalOpen: Dispatch<SetStateAction<JSX.Element | null>>;
 }
 
 export interface IDefaultProviderProps {

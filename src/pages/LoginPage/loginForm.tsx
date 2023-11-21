@@ -7,13 +7,12 @@ import { ILoginUser } from "../../providers/user/interface";
 import { ButtonStyled, ErrorMessage, FormStyled } from "./style";
 import { Link } from "react-router-dom";
 import { Input } from "../../components/Input";
-import { GenericModal } from "../../components/Modal";
 import { RegisterForm } from "../RegisterPage";
 import { ModalContext } from "../../providers/modal";
 
 export const LoginForm = () => {
   const { loginUser } = useContext(UserContext);
-  const { modalOpen, openModal, closeModal } = useContext(ModalContext);
+  const { modalOpen, setModalOpen } = useContext(ModalContext);
 
   const {
     register,
@@ -25,11 +24,7 @@ export const LoginForm = () => {
 
   const submit: SubmitHandler<ILoginUser> = (data) => {
     loginUser(data);
-    closeModal()
-  };
-
-  const handleOpenModal = () => {
-    openModal("register");
+    setModalOpen(null);
   };
 
   return (
@@ -54,13 +49,12 @@ export const LoginForm = () => {
       <Link to="">Esqueci minha senha</Link>
       <ButtonStyled type="submit">Entrar</ButtonStyled>
       <p>Ainda não possui conta?</p>
-      <ButtonStyled type="button" onClick={handleOpenModal}>
+      <ButtonStyled
+        type="button"
+        onClick={() => setModalOpen(<RegisterForm />)}
+      >
         Cadastrar
       </ButtonStyled>
-
-      <GenericModal open={modalOpen === "register"} onClose={closeModal}>
-        <RegisterForm />
-      </GenericModal>
     </FormStyled>
   );
 };

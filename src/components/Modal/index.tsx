@@ -1,36 +1,20 @@
-import { Backdrop, Box, Modal, styled } from "@mui/material";
-import React, { ReactNode } from "react";
+import { useContext } from "react";
+import { ModalStyled } from "./styled";
+import { ModalContext } from "../../providers/modal";
 
-interface ModalProps {
-  open: boolean;
-  onClose: () => void;
-  children: ReactNode;
-}
+export const Modal = () => {
+  const { modalOpen, setModalOpen } = useContext(ModalContext);
 
-const BlurredBackdrop = styled(Backdrop)`
-  backdrop-filter: blur(5px);
-`;
+  const closeModal = () => {
+    setModalOpen(null);
+  };
 
-export const GenericModal: React.FC<ModalProps> = ({
-  open,
-  onClose,
-  children,
-}) => {
   return (
-    <Modal open={open} onClose={onClose} BackdropComponent={BlurredBackdrop}>
-      <Box
-        sx={{
-          background: "white",
-          padding: "20px",
-          borderRadius: "8px",
-          position: "fixed",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-      >
-        {children}
-      </Box>
-    </Modal>
+    <ModalStyled>
+      <div>
+        <button onClick={closeModal}>X</button>
+        {modalOpen}
+      </div>
+    </ModalStyled>
   );
 };
