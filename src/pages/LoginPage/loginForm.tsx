@@ -12,7 +12,7 @@ import { ModalContext } from "../../providers/modal";
 
 export const LoginForm = () => {
   const { loginUser } = useContext(UserContext);
-  const { modalOpen, setModalOpen } = useContext(ModalContext);
+  const { setModalOpen } = useContext(ModalContext);
 
   const {
     register,

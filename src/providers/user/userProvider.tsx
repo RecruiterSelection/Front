@@ -66,11 +66,12 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   const loginUser = async (data: ILoginUser) => {
+    console.log(data);
     await api
-      .post("", data)
+      .post("/auth/login", data)
       .then((res) => {
         localStorage.setItem("@TOKEN", res.data.token);
-        getUser();
+        //getUser();
         toast.success("Login realizado com sucesso!");
         setTimeout(() => {
           navigate("/DashBoard");

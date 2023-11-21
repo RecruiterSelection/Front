@@ -3,16 +3,13 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Input } from "../../../Input";
 
-export const FormPerfilCandidate = () => {
+export const FormPerfilRecruiter = () => {
   const schema = z.object({
     firstName: z.string().min(1, { message: "Obrigatório" }),
     lastName: z.string().min(1, { message: "Obrigatório" }),
+    companyName: z.string().min(1, { message: "Obrigatório" }),
     contactNumber: z.string().min(1, { message: "Obrigatório" }),
     address: z.string().min(1, { message: "Obrigatório" }),
-    education: z.string().min(1, { message: "Obrigatório" }),
-    skills: z.string().min(1, { message: "Obrigatório" }),
-    experience: z.string().min(1, { message: "Obrigatório" }),
-    references: z.string().min(1, { message: "Obrigatório" }),
   });
 
   const {
@@ -30,8 +27,6 @@ export const FormPerfilCandidate = () => {
   return (
     <>
       <form onSubmit={handleSubmit(creatNewProfile)}>
-        <h2>Candidate</h2>
-
         <Input
           register={register("firstName")}
           placeholder="Primeiro nome"
@@ -50,11 +45,19 @@ export const FormPerfilCandidate = () => {
         />
 
         <Input
-          register={register("contactNumber")}
-          placeholder="Telefone"
+          register={register("companyName")}
+          placeholder="Empresa"
           type="text"
-          key="Telefone"
-          label="Telefone"
+          key="Empresa"
+          label="Empresa"
+        />
+
+        <Input
+          register={register("contactNumber")}
+          placeholder="Contato"
+          type="text"
+          key="Contato"
+          label="Contato"
         />
 
         <Input
@@ -63,38 +66,6 @@ export const FormPerfilCandidate = () => {
           type="text"
           key="Endereço"
           label="Endereço"
-        />
-
-        <Input
-          register={register("education")}
-          placeholder="Educação"
-          type="text"
-          key="Educação"
-          label="Educação"
-        />
-
-        <Input
-          register={register("skills")}
-          placeholder="Habilidades"
-          type="text"
-          key="Habilidades"
-          label="Habilidades"
-        />
-
-        <Input
-          register={register("experience")}
-          placeholder="Experiências"
-          type="text"
-          key="Experiências"
-          label="Experiências"
-        />
-
-        <Input
-          register={register("references")}
-          placeholder="Referencias"
-          type="text"
-          key="Referencias"
-          label="Referencias"
         />
 
         <button type="submit">Cadastrar</button>

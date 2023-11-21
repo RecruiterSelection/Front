@@ -4,14 +4,16 @@ import { ContaiderPerfilStyled, PerfilStyled } from "./style";
 import { FaPencil } from "react-icons/fa6";
 import { CgAdd } from "react-icons/cg";
 import { FormPerfilCandidate } from "../../components/Forms/Perfil/PerfilCandidate";
+import { FormPerfilRecruiter } from "../../components/Forms/Perfil/PerfilRecruiter";
 
 export const PerfilPage = () => {
+  const userIsRecruiter = true;
+
   return (
     <>
       <HeaderComponents />
       <ContaiderPerfilStyled>
-        <FormPerfilCandidate />
-
+        {userIsRecruiter ? <FormPerfilRecruiter /> : <FormPerfilCandidate />}
         {/* <PerfilStyled>
           <div>
             <img
