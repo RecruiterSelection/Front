@@ -1,68 +1,77 @@
 import { createContext, useState } from "react";
-
 import { api } from "../../../services/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
 import { IDefaultProviderProps } from "../interface";
 import {
-  IPerfilCandidate,
+  IPerfilRecruiter,
   IPerfilContext,
-  IRegisterPerfilCandidate,
-  TUpdatePerfilCandidate,
+  IRegisterPerfilRecruiter,
+  TUpdatePerfilRecruiter,
 } from "./interface";
 
 export const UserContext = createContext({} as IPerfilContext);
 
 export const UserProvider = ({ children }: IDefaultProviderProps) => {
-  const [profile, setProfile] = useState<IPerfilCandidate>(
-    {} as IPerfilCandidate
+  const [profileRecruiter, setProfileRecruiter] = useState<IPerfilRecruiter>(
+    {} as IPerfilRecruiter
   );
 
   //const navigate = useNavigate();
 
-  const createPerfilCandidate = async (
-    data: IRegisterPerfilCandidate,
+  const createPerfilRecruiter = async (
+    data: IRegisterPerfilRecruiter,
     id: number
   ) => {
     await api
-      .post(`/candidates/${id}`, data)
+      .post(`/recruiters/${id}`, data)
       .then((res) => {
-        setProfile(res.data);
+        setProfileRecruiter(res.data);
         toast.success("Perfil criado com succeso!");
       })
       .catch((err) => console.error(err));
   };
 
-  const getCandidateProfile = async (id: number) => {
+  const getRecruiterProfile = async (id: number) => {
     await api
-      .get(`/candidates${id}`, {
+      .get(`/recruiters${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
         },
       })
       .then((res) => {
-        setProfile(res.data);
+        setProfileRecruiter(res.data);
       })
       .catch((err) => console.error(err));
   };
 
-  const updateCandidateProfile = async (
-    data: TUpdatePerfilCandidate,
+  const updateRecruiterProfile = async (
+    data: TUpdatePerfilRecruiter,
     id: number
   ) => {
     await api
-      .patch(`/candidates/${id}`, data, {
+      .patch(`/recruiters/${id}`, data, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
         },
       })
       .then((res) => {
-        setProfile(res.data);
+        setProfileRecruiter(res.data);
         toast.success("Perfil editado com succeso!");
       })
       .catch((err) => toast.error(err));
   };
 
-  return <UserContext.Provider value={{}}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider
+      value={{
+        profileRecruiter,
+        createPerfilRecruiter,
+        getRecruiterProfile,
+        updateRecruiterProfile,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
 };

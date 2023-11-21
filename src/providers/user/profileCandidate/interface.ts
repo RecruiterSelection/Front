@@ -26,7 +26,16 @@ export interface IRegisterPerfilCandidate {
 export type TUpdatePerfilCandidate = DeepPartial<IRegisterPerfilCandidate>;
 
 export interface IPerfilContext {
-  user: IRegisterPerfilCandidate | null;
+  candidateProfile: IRegisterPerfilCandidate | null;
+  createPerfilCandidate: (
+    data: IRegisterPerfilCandidate,
+    id: number
+  ) => Promise<void>;
+  getCandidateProfile: (id: number) => Promise<void>;
+  updateCandidateProfile: (
+    data: TUpdatePerfilCandidate,
+    id: number
+  ) => Promise<void>;
 }
 
 export interface IDefaultProviderProps {
