@@ -17,6 +17,7 @@ export const PerfilPage = () => {
             />
             <span>Name</span>
             <span>Função</span>
+            <button type="button">{<FaPencil size="16" />}</button>
           </div>
 
           <div>
