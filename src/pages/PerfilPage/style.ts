@@ -9,9 +9,6 @@ export const PerfilStyled = styled.form`
   position: relative;
   gap: 50px;
 
-  div {
-  }
-
   input {
     border-radius: 6px;
     border: none;
@@ -41,6 +38,11 @@ export const PerfilStyled = styled.form`
     max-width: 90%;
 
     padding: 10px;
+  }
+
+  select {
+    border-radius: 6px;
+    padding: 2px;
   }
 
   img {
