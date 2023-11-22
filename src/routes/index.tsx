@@ -10,6 +10,7 @@ import { ModalContext } from "../providers/modal";
 import { ProtectedRoute } from "./protectRoutes";
 import { ProtectedLayout } from "./protectedLayout";
 import { FooterComponent } from "../components/Footer";
+import { ContactPage } from "../pages/Contact";
 
 export const RoutesMain = () => {
   const { modalOpen } = useContext(ModalContext);
@@ -20,6 +21,7 @@ export const RoutesMain = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/aboutUs" element={<AboutUsPage />} />
+        <Route path="/contact" element={<ContactPage/>}/>
         <Route element={<ProtectedRoute/>}>
           <Route element={<ProtectedLayout/>}>
             <Route path="/dashBoard" element={<DashBoardPage />} />

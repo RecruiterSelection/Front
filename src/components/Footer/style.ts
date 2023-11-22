@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const phoneBreakPoint = "576px";
+
 export const StyledFooter = styled.footer`
   background-color: var(--brand--brand3);
   padding: 0;
@@ -29,6 +31,10 @@ export const StyledFooterContainer = styled.div`
     color: var(--white-fixed);
     font-size: 12px;
     font-weight: 400;
+
+    @media (max-width: ${phoneBreakPoint}) {
+      font-size: 8px;
+    }
   }
 
   #logo {
