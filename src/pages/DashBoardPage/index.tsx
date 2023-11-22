@@ -1,4 +1,8 @@
+import { StyledDashboardContainer } from "./style";
+
 export const DashBoardPage = () => {
-    return <h1>DashBoard Page</h1>;
+    return <StyledDashboardContainer>
+      <h1>DashBoard Page</h1>;
+    </StyledDashboardContainer>
   };
   
