@@ -27,6 +27,7 @@ export const FormPerfilRecruiter = () => {
   return (
     <>
       <form onSubmit={handleSubmit(creatNewProfile)}>
+        <h2>Recrutador</h2>
         <Input
           register={register("firstName")}
           placeholder="Primeiro nome"

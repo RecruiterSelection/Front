@@ -7,7 +7,7 @@ import { FormPerfilCandidate } from "../../components/Forms/Perfil/PerfilCandida
 import { FormPerfilRecruiter } from "../../components/Forms/Perfil/PerfilRecruiter";
 
 export const PerfilPage = () => {
-  const userIsRecruiter = true;
+  const userIsRecruiter = false;
 
   return (
     <>

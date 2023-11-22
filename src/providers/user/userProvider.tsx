@@ -23,13 +23,26 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     await api
       .post("/users", data)
       .then((res) => {
-        setUser(res.data);
-
+        //setUser(res.data);
+        console.log(res);
         toast.success("Perfil criado com succeso!");
       })
       .catch((err) => console.error(err));
   };
 
+  const getUserProfile = async (id: number) => {
+    await api
+      .get(`/users/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
+        },
+      })
+      .then((res) => {
+        setUser(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => console.error(err));
+  };
   const getUser = async () => {
     await api
       .get(`/users`, {
@@ -66,13 +79,13 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   const loginUser = async (data: ILoginUser) => {
-    console.log(data);
     await api
       .post("/auth/login", data)
       .then((res) => {
-        localStorage.setItem("@TOKEN", res.data.token);
-        //getUser();
+        localStorage.setItem("@TOKEN", res.data.accessToken);
+        console.log(res.data);
         toast.success("Login realizado com sucesso!");
+        getUserProfile(res.data.userId);
         setTimeout(() => {
           navigate("/DashBoard");
         }, 3000);
@@ -101,6 +114,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         deleteUser,
         loginUser,
         logoutUser,
+        getUserProfile,
       }}
     >
       {children}
