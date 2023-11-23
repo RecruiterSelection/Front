@@ -2,15 +2,15 @@ import { HeaderComponents } from "../../components/Header";
 import { VacanciesStyledContainer } from "./style";
 import { IoSearch } from "react-icons/io5";
 import { VacanciesComponent } from "../../components/Vacancies";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export const VacanciesPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [inputValue, setInputValue] = useState("");
 
-  const submitSearch = (event) => {
+  const submitSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(searchTerm);
+
     setSearchTerm(inputValue);
   };
 
