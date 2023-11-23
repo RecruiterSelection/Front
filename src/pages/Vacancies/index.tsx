@@ -1,30 +1,35 @@
 import { HeaderComponents } from "../../components/Header";
-import { CardVacancie } from "./CardVacancie";
-import { VacanciesStyle } from "./style";
+import { VacanciesStyledContainer } from "./style";
 import { IoSearch } from "react-icons/io5";
-import { useContext } from "react";
-import { VacancieContext } from "../../providers/VacancieContext";
 import { VacanciesComponent } from "../../components/Vacancies";
+import { FormEvent, useState } from "react";
 
 export const VacanciesPage = () => {
-  const { vacancies } = useContext(VacancieContext);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [inputValue, setInputValue] = useState("");
+
+  const submitSearch = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setSearchTerm(inputValue);
+  };
 
   return (
     <>
       <HeaderComponents />
-      <VacanciesStyle>
-        <form>
-          <IoSearch />
-          <input placeholder="Sua busca aqui" type="text" />
+      <VacanciesStyledContainer>
+        <form onSubmit={submitSearch}>
+          <IoSearch style={{ color: "black" }} />
+          <input
+            placeholder="Sua busca aqui"
+            type="text"
+            onChange={(e) => setInputValue(e.target.value)}
+            value={inputValue}
+          />
           <button type="submit">Pesquisar</button>
         </form>
-        <VacanciesComponent/>
-        {/* <ul>
-          {vacancies.map((vacancie: any) => (
-            <CardVacancie vacancie={vacancie} />
-          ))}
-        </ul> */}
-      </VacanciesStyle>
+        <VacanciesComponent searchTerm={searchTerm} />
+      </VacanciesStyledContainer>
     </>
   );
 };
