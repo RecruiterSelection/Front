@@ -23,13 +23,14 @@ export const RoutesMain = () => {
         <Route path="/aboutUs" element={<AboutUsPage />} />
         <Route path="/contact" element={<ContactPage/>}/>
         <Route path="/vacancies" element={<VacanciesPage />} />
-        <Route element={<ProtectedRoute/>}>
+        {/* <Route element={<ProtectedRoute/>}> */}
           <Route element={<ProtectedLayout/>}>
             <Route path="/dashBoard" element={<DashBoardPage />} />
             <Route path="/perfil" element={<PerfilPage />} />
           </Route>
-        </Route>
+        {/* </Route> */}
       </Routes>
+      
     </>
   );
 };

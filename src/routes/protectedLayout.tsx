@@ -7,7 +7,6 @@ export const ProtectedLayout = () => {
     <>
       <HeaderComponents />
       <Outlet />
-      < FooterComponent/>
     </>
   );
 };
