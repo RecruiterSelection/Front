@@ -4,6 +4,7 @@ import { VacanciesStyle } from "./style";
 import { IoSearch } from "react-icons/io5";
 import { useContext } from "react";
 import { VacancieContext } from "../../providers/VacancieContext";
+import { VacanciesComponent } from "../../components/Vacancies";
 
 export const VacanciesPage = () => {
   const { vacancies } = useContext(VacancieContext);
@@ -17,11 +18,12 @@ export const VacanciesPage = () => {
           <input placeholder="Sua busca aqui" type="text" />
           <button type="submit">Pesquisar</button>
         </form>
-        <ul>
+        <VacanciesComponent/>
+        {/* <ul>
           {vacancies.map((vacancie: any) => (
             <CardVacancie vacancie={vacancie} />
           ))}
-        </ul>
+        </ul> */}
       </VacanciesStyle>
     </>
   );

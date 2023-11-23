@@ -1,10 +1,11 @@
 import { HeaderComponents } from "../../components/Header";
 
-export const DashBoardPage = () => (
-  <>
-    <HeaderComponents />
-    <main>
-      <h1>Dashboard</h1>
-    </main>
-  </>
-);
+import { StyledDashboardContainer } from "./style";
+
+export const DashBoardPage = () => {
+    return <StyledDashboardContainer>
+       <HeaderComponents />
+      <h1>DashBoard Page</h1>;
+    </StyledDashboardContainer>
+  };
+  
