@@ -5,10 +5,10 @@ import { formSchema } from "../../schemas/loginSchema";
 import { UserContext } from "../../providers/user/userProvider";
 import { ILoginUser } from "../../providers/user/interface";
 import { ButtonStyled, ErrorMessage, FormStyled } from "./style";
-import { Link } from "react-router-dom";
 import { Input } from "../../components/Input";
 import { RegisterForm } from "../RegisterPage";
 import { ModalContext } from "../../providers/modal";
+import { SendEmailForm } from "../../components/Forms/SendEmail";
 
 export const LoginForm = () => {
   const { loginUser } = useContext(UserContext);
@@ -46,7 +46,7 @@ export const LoginForm = () => {
       {errors.password && (
         <ErrorMessage>{errors.password.message}</ErrorMessage>
       )}
-      <Link to="">Esqueci minha senha</Link>
+      <ButtonStyled onClick={() => setModalOpen(<SendEmailForm />)}>Esqueci minha senha</ButtonStyled>
       <ButtonStyled type="submit">Entrar</ButtonStyled>
       <p>Ainda não possui conta?</p>
       <ButtonStyled

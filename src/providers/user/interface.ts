@@ -26,6 +26,8 @@ export interface IUserContext {
   loginUser: (data: ILoginUser) => Promise<void>;
   logoutUser: () => void;
   getUserProfile: (id: number) => void;
+  sendEmail: (data: ISendEmail) => void;
+  resetPassword: (data: IResetPassword, token: string) => void;
 }
 
 export interface IDefaultProviderProps {
@@ -33,3 +35,12 @@ export interface IDefaultProviderProps {
 }
 
 export type TUpdateUser = DeepPartial<IRegisterUser>;
+
+export interface ISendEmail {
+  email: string;
+}
+
+export interface IResetPassword {
+  password: string;
+  confirmPassword: string;
+}
