@@ -1,18 +1,18 @@
 import { HeaderComponents } from "../../components/Header";
 import { Select } from "../../components/select";
-import { ContaiderPerfilStyled, PerfilStyled } from "./style";
+import { ContainerPerfilStyled, PerfilStyled } from "./style";
 import { FaPencil } from "react-icons/fa6";
 import { CgAdd } from "react-icons/cg";
 import { FormPerfilCandidate } from "../../components/Forms/Perfil/PerfilCandidate";
 import { FormPerfilRecruiter } from "../../components/Forms/Perfil/PerfilRecruiter";
+import { FooterComponent } from "../../components/Footer";
 
 export const PerfilPage = () => {
   const userIsRecruiter = false;
 
   return (
     <>
-      <HeaderComponents />
-      <ContaiderPerfilStyled>
+      <ContainerPerfilStyled>
         {userIsRecruiter ? <FormPerfilRecruiter /> : <FormPerfilCandidate />}
         {/* <PerfilStyled>
           <div>
@@ -89,7 +89,8 @@ export const PerfilPage = () => {
             </div>
           </div>
         </PerfilStyled> */}
-      </ContaiderPerfilStyled>
+         < FooterComponent/>
+      </ContainerPerfilStyled>
     </>
   );
 };

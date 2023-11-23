@@ -6,7 +6,12 @@ import { PerfilPage } from "../pages/PerfilPage";
 import { Modal } from "../components/Modal";
 import { useContext } from "react";
 import { ModalContext } from "../providers/modal";
+
+import { ProtectedRoute } from "./protectRoutes";
+import { ProtectedLayout } from "./protectedLayout";
+import { ContactPage } from "../pages/Contact";
 import { DashBoardPage } from "../pages/DashBoardPage";
+
 
 
 export const RoutesMain = () => {
@@ -17,11 +22,19 @@ export const RoutesMain = () => {
       {modalOpen && <Modal />}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/AboutUs" element={<AboutUsPage />} />
-        <Route path="/DashBoard" element={<DashBoardPage />} />
-        <Route path="/Vacancies" element={<VacanciesPage />} />
-        <Route path="/Perfil" element={<PerfilPage />} />
+
+        <Route path="/aboutUs" element={<AboutUsPage />} />
+        <Route path="/contact" element={<ContactPage/>}/>
+        <Route path="/vacancies" element={<VacanciesPage />} />
+        <Route element={<ProtectedRoute/>}>
+          <Route element={<ProtectedLayout/>}>
+            <Route path="/dashBoard" element={<DashBoardPage />} />
+            <Route path="/perfil" element={<PerfilPage />} />
+          </Route>
+        </Route>
+
       </Routes>
+      
     </>
   );
 };

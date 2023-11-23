@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const phoneBreakPoint = "768px";
+
 export const MainStyled = styled.main`
   background-color: var(--brand--brand1);
   display: flex;
@@ -8,12 +10,23 @@ export const MainStyled = styled.main`
   overflow: auto;
   padding-bottom: 50px;
 
+  .inner_section_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: ${phoneBreakPoint}) {
+      flex-direction: column;
+    }
+  }
+
   img {
     height: 355px;
   }
 
   @media (min-width: 1024px) {
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
 
     img {
@@ -54,7 +67,11 @@ export const ContainerButton = styled.div`
     background-color: var(--random--random-1);
     border: none;
     border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.55);
-    cursor: pointer;
+  }
+
+  button:hover {
+    transition: 0.2s ease;
+    transform: scale(1.1);
+    background-color: var(--random--random-2);
   }
 `;

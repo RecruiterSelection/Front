@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import { LoginForm } from "../../pages/LoginPage/loginForm";
+import { LoginForm } from "../../pages/LoginModal/loginForm";
 import { ModalContext } from "../../providers/modal";
 import { HeaderContainerStyled, LogoLinkStyled, NavStyled } from "./style";
 import { useState, useContext } from "react";
 import { RiMenuFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../providers/user/userProvider";
 
 export const HeaderComponents = () => {
@@ -18,6 +19,11 @@ export const HeaderComponents = () => {
   const toggleMenu = () => {
     setMenuIsVisible(!menuIsVisible);
   };
+  const navigate = useNavigate();
+
+  const navigateTo = (path:string) => {
+    navigate(path)
+  }
 
   return (
     <HeaderContainerStyled>
@@ -26,20 +32,24 @@ export const HeaderComponents = () => {
       </LogoLinkStyled>
       <RiMenuFill onClick={toggleMenu} className="mobile" />
       <NavStyled isVisible={menuIsVisible}>
+
+
         {isLoggedIn ? (
           <>
             <button>EDITAR PERFIL</button>
             <button>DELETAR CONTA</button>
             <button onClick={() => logoutUser()}>Sair</button>
+              
           </>
         ) : (
           <>
-            <button>VAGAS</button>
+            <button onClick={()=> navigateTo("/vacancies")} >VAGAS</button>
             <Link to={"/AboutUs"}>SOBRE NÓS</Link>
-            <button>CONTATO</button>
+            <button onClick={()=> navigateTo("/contact")} >CONTATO</button>
             <button onClick={() => setModalOpen(<LoginForm />)}>ENTRAR</button>
           </>
         )}
+
       </NavStyled>
     </HeaderContainerStyled>
   );
