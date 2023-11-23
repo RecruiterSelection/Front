@@ -6,17 +6,25 @@ import { useState } from "react";
 
 export const VacanciesPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [inputValue, setInputValue] = useState("");
+
+  const submitSearch = (event) => {
+    event.preventDefault();
+    console.log(searchTerm);
+    setSearchTerm(inputValue);
+  };
 
   return (
     <>
       <HeaderComponents />
       <VacanciesStyledContainer>
-        <form>
+        <form onSubmit={submitSearch}>
           <IoSearch style={{ color: "black" }} />
           <input
             placeholder="Sua busca aqui"
             type="text"
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => setInputValue(e.target.value)}
+            value={inputValue}
           />
           <button type="submit">Pesquisar</button>
         </form>
