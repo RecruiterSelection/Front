@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import {
   IDefaultProviderProps,
   ILoginUser,
@@ -11,11 +11,14 @@ import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { ModalContext } from "../modal";
+import { LoginForm } from "../../pages/LoginPage/loginForm";
 
 export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const [user, setUser] = useState<IUser>({} as IUser);
+  const { setModalOpen } = useContext(ModalContext);
 
   const navigate = useNavigate();
 
@@ -23,9 +26,11 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     await api
       .post("/users", data)
       .then((res) => {
-        //setUser(res.data);
-        console.log(res);
+        setUser(res.data);
         toast.success("Perfil criado com succeso!");
+        setTimeout(() => {
+          setModalOpen(<LoginForm />);
+        }, 3000);
       })
       .catch((err) => console.error(err));
   };
@@ -39,7 +44,6 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       })
       .then((res) => {
         setUser(res.data);
-        console.log(res.data);
       })
       .catch((err) => console.error(err));
   };
@@ -64,6 +68,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         },
       })
       .then((res) => {
+        console.log(res.data);
         setUser(res.data);
         getUser();
         toast.success("Perfil editado com succeso!");
@@ -83,11 +88,10 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       .post("/auth/login", data)
       .then((res) => {
         localStorage.setItem("@TOKEN", res.data.accessToken);
-        console.log(res.data);
         toast.success("Login realizado com sucesso!");
         getUserProfile(res.data.userId);
         setTimeout(() => {
-          navigate("/DashBoard");
+          navigate("/Dashboard");
         }, 3000);
       })
       .catch((err) => {
@@ -99,9 +103,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const logoutUser = () => {
     setUser({} as IUser);
     localStorage.removeItem("@TOKEN");
-    setTimeout(() => {
-      navigate("/");
-    }, 3000);
+    navigate("/");
   };
 
   return (

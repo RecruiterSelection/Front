@@ -5,14 +5,14 @@ export const formSchema = z.object({
     .string()
     .email({ message: "E-mail inválido" })
     .min(1, { message: "Campo obrigatório" }),
-  password: z
+  passwordHash: z
     .string()
     .min(4, { message: "Mínimo 4 caracteres" })
     .min(1, { message: "Campo obrigatório" }),
-  account_type: z
+  role: z
     .string()
     .min(1, { message: "Campo obrigatório" })
-    .refine((value) => ["Recruiter", "Candidate"].includes(value), {
+    .refine((value) => ["RECRUITER", "CANDIDATE"].includes(value), {
       message: "Selecione uma opção válida",
     }),
 });

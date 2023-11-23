@@ -10,7 +10,7 @@ import { DivInput, DivInputRadio, ErrorMessage, FormStyled } from "./style";
 
 export const RegisterForm = () => {
   const { createUser } = useContext(UserContext);
-  const { closeModal } = useContext(ModalContext);
+  const { setModalOpen } = useContext(ModalContext);
 
   const {
     register,
@@ -22,7 +22,7 @@ export const RegisterForm = () => {
 
   const submit: SubmitHandler<IRegisterUser> = (data) => {
     createUser(data);
-    closeModal();
+    setModalOpen(null)    
   };
 
   return (
@@ -39,28 +39,28 @@ export const RegisterForm = () => {
         label="Senha"
         type="password"
         placeholder="Digitar senha"
-        register={register("password")}
+        register={register("passwordHash")}
       />
-      {errors.password && (
-        <ErrorMessage>{errors.password.message}</ErrorMessage>
+      {errors.passwordHash && (
+        <ErrorMessage>{errors.passwordHash.message}</ErrorMessage>
       )}
       <DivInput>
         <p>Tipo de Conta</p>
         <DivInputRadio>
           <label>
-            <input type="radio" value="Recruiter" {...register("account_type")} />
+            <input type="radio" value="RECRUITER" {...register("role")} />
             <span>Recrutador</span>
           </label>
           <label>
             <input
               type="radio"
-              value="Candidate"
-              {...register("account_type")}
+              value="CANDIDATE"
+              {...register("role")}
             />
             <span>Candidato</span>
           </label>
         </DivInputRadio>
-        {errors.account_type && <ErrorMessage>{errors.account_type.message}</ErrorMessage>}
+        {errors.role && <ErrorMessage>{errors.role.message}</ErrorMessage>}
       </DivInput>
       <button type="submit">Cadastrar</button>
     </FormStyled>
