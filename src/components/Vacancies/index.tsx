@@ -9,12 +9,12 @@ interface IsearchTerm {
 
 export const VacanciesComponent = (props: IsearchTerm) => {
   const { searchTerm } = props;
-  const { getAllVacancies, vacancies } =
+  const { getAllVacancies, vacancies, totalPages } =
     useContext<IVacanciesContext>(VacancieContext);
 
   useEffect(() => {
-    getAllVacancies();
-  }, []);
+    getAllVacancies("1", totalPages?.toString());
+  }, [searchTerm, getAllVacancies]);
 
   const formatJobType = (jobType: string) => {
     return jobType
@@ -31,36 +31,45 @@ export const VacanciesComponent = (props: IsearchTerm) => {
   };
 
   return (
-    <StyledVacanciesContainer>
-      {vacancies
-        .filter((vacancy) => {
-          if (!searchTerm) return true;
-          return (
-            vacancy.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            vacancy.jobType.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            vacancy.description.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-        })
-        .map((vacancy, index) => (
-          <StyledVacancyBox key={index}>
-            <h2>{vacancy.title}</h2>
-            <div className="jobType_wrapper">
-              <small>{formatJobType(vacancy.jobType)}</small>
-              <small>{vacancy.location}</small>
-            </div>
-            <div className="description_wrapper">
-              <h2>Descrição</h2>
-              <p>{formatText(vacancy.description, 100)}</p>
-            </div>
-            <div className="requirements_wrapper">
-              <h2>Requisitos</h2>
-              <p>{formatText(vacancy.responsibilities, 100)}</p>
-            </div>
-            <div className="button_wrapper">
-              <button className="vacancy_button"> Ver mais </button>
-            </div>
-          </StyledVacancyBox>
-        ))}
-    </StyledVacanciesContainer>
+    <>
+      <StyledVacanciesContainer>
+        {Array.isArray(vacancies) &&
+          vacancies
+            .filter((vacancy) => {
+              if (!searchTerm) return true;
+              return (
+                vacancy.title
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase()) ||
+                vacancy.jobType
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase()) ||
+                vacancy.description
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase())
+              );
+            })
+            .map((vacancy, index) => (
+              <StyledVacancyBox key={index}>
+                <h2>{vacancy.title}</h2>
+                <div className="jobType_wrapper">
+                  <small>{formatJobType(vacancy.jobType)}</small>
+                  <small>{vacancy.location}</small>
+                </div>
+                <div className="description_wrapper">
+                  <h2>Descrição</h2>
+                  <p>{formatText(vacancy.description, 100)}</p>
+                </div>
+                <div className="requirements_wrapper">
+                  <h2>Requisitos</h2>
+                  <p>{formatText(vacancy.responsibilities, 100)}</p>
+                </div>
+                <div className="button_wrapper">
+                  <button className="vacancy_button"> Ver mais </button>
+                </div>
+              </StyledVacancyBox>
+            ))}
+      </StyledVacanciesContainer>
+    </>
   );
 };
