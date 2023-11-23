@@ -56,19 +56,7 @@ export const VacancieProvider = ({ children }: IProviderProps) => {
     []
   );
 
-  const updateVacancie = async (id: number, data: any) => {
-    await api
-      .patch(`/jobs/${id}`, data, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
-        },
-      })
-      .then((res) => {
-        getVacancie();
-        toast.success("Vaga editada com succeso!");
-      })
-      .catch((err) => toast.error(err));
-  };
+  const updateVacancie = async (id: number, data: any) => {};
 
   const deleteVacancie = async (id: number) => {
     await api
