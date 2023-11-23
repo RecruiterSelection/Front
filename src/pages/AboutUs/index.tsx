@@ -1,4 +1,5 @@
 import aboutus from "../../assets/aboutus.svg";
+import { FooterComponent } from "../../components/Footer";
 import { HeaderComponents } from "../../components/Header";
 import { DivStyled, MainStyled, SectionStyled } from "./style";
 
@@ -60,6 +61,7 @@ export const AboutUsPage = () => {
           </p>
         </SectionStyled>
       </MainStyled>
+      <FooterComponent />
     </>
   );
 };

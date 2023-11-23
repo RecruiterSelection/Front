@@ -12,8 +12,6 @@ import { ProtectedLayout } from "./protectedLayout";
 import { ContactPage } from "../pages/Contact";
 import { DashBoardPage } from "../pages/DashBoardPage";
 
-
-
 export const RoutesMain = () => {
   const { modalOpen } = useContext(ModalContext);
 
@@ -22,19 +20,16 @@ export const RoutesMain = () => {
       {modalOpen && <Modal />}
       <Routes>
         <Route path="/" element={<HomePage />} />
-
         <Route path="/aboutUs" element={<AboutUsPage />} />
-        <Route path="/contact" element={<ContactPage/>}/>
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/vacancies" element={<VacanciesPage />} />
-        <Route element={<ProtectedRoute/>}>
-          <Route element={<ProtectedLayout/>}>
+        <Route element={<ProtectedRoute />}>
+          <Route element={<ProtectedLayout />}>
             <Route path="/dashBoard" element={<DashBoardPage />} />
             <Route path="/perfil" element={<PerfilPage />} />
           </Route>
         </Route>
-
       </Routes>
-      
     </>
   );
 };
