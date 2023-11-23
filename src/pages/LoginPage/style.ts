@@ -13,13 +13,6 @@ export const FormStyled = styled.form`
     color: var(--grey--scale--grey-0);
   }
 
-  a {
-    align-self: flex-end;
-    font-size: var(--text--body5);
-    font-weight: 500;
-    color: var(--grey--scale--grey-2);
-  }
-
   p {
     font-size: var(--text--body5);
     color: var(--grey--scale--grey-0);
@@ -37,11 +30,22 @@ export const ButtonStyled = styled.button`
   margin-top: 30px;
 
   &:nth-of-type(1) {
+    width: auto;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    align-self: flex-end;
+    font-size: var(--text--body5);
+    font-weight: 500;
+    color: var(--grey--scale--grey-2);
+  }
+
+  &:nth-of-type(2) {
     background-color: var(--random--random-1);
     margin-bottom: 25px;
   }
 
-  &:nth-of-type(2) {
+  &:nth-of-type(3) {
     background-color: var(--brand--brand2);
   }
 `;
