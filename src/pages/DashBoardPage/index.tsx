@@ -1,4 +1,10 @@
-export const DashBoardPage = () => {
-    return <h1>DashBoard Page</h1>;
-  };
-  
+import { HeaderComponents } from "../../components/Header";
+
+export const DashBoardPage = () => (
+  <>
+    <HeaderComponents />
+    <main>
+      <h1>Dashboard</h1>
+    </main>
+  </>
+);

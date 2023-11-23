@@ -13,7 +13,7 @@ export interface ILoginUser {
 
 export interface IRegisterUser {
   email: string;
-  password: string;
+  passwordHash: string;
   role: string;
 }
 
