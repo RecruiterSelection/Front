@@ -6,14 +6,24 @@ import { CgAdd } from "react-icons/cg";
 import { FormPerfilCandidate } from "../../components/Forms/Perfil/PerfilCandidate";
 import { FormPerfilRecruiter } from "../../components/Forms/Perfil/PerfilRecruiter";
 import { FooterComponent } from "../../components/Footer";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../providers/user/userProvider";
 
 export const PerfilPage = () => {
-  const userIsRecruiter = false;
+  const { user, getUserProfile } = useContext(UserContext);
+
+  useEffect(() => {
+    getUserProfile(1);
+  }, []);
 
   return (
     <>
       <ContainerPerfilStyled>
-        {userIsRecruiter ? <FormPerfilRecruiter /> : <FormPerfilCandidate />}
+        {user!.role == "RECRUITER" ? (
+          <FormPerfilRecruiter />
+        ) : (
+          <FormPerfilCandidate />
+        )}
         {/* <PerfilStyled>
           <div>
             <img
@@ -89,7 +99,7 @@ export const PerfilPage = () => {
             </div>
           </div>
         </PerfilStyled> */}
-         < FooterComponent/>
+        <FooterComponent />
       </ContainerPerfilStyled>
     </>
   );

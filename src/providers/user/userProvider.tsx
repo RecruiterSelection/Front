@@ -16,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 import { ModalContext } from "../modal";
 import { LoginForm } from "../../pages/LoginModal/loginForm";
 
-
 export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IDefaultProviderProps) => {
@@ -39,14 +38,17 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   const getUserProfile = async (id: number) => {
+    const userId = localStorage.getItem("@userId");
+
     await api
-      .get(`/users/${id}`, {
+      .get(`/users/${Number(userId)}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
         },
       })
       .then((res) => {
         setUser(res.data);
+        console.log(res.data);
       })
       .catch((err) => console.error(err));
   };
@@ -90,7 +92,10 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     await api
       .post("/auth/login", data)
       .then((res) => {
+        console.log(res.data);
         localStorage.setItem("@TOKEN", res.data.accessToken);
+        localStorage.setItem("@userId", res.data.userId);
+
         toast.success("Login realizado com sucesso!");
         getUserProfile(res.data.userId);
         setTimeout(() => {
