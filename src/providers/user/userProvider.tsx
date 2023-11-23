@@ -3,6 +3,8 @@ import {
   IDefaultProviderProps,
   ILoginUser,
   IRegisterUser,
+  IResetPassword,
+  ISendEmail,
   IUser,
   IUserContext,
   TUpdateUser,
@@ -112,6 +114,35 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     navigate("/");
   };
 
+  const sendEmail = (sendEmailResetPassword: ISendEmail) => {
+    api
+      .post('/users/resetPassword', sendEmailResetPassword)
+      .then(() => {
+        toast.success('E-mail enviado com sucesso !');
+        navigate('/');
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error('Erro ao enviar o e-mail, tente novamente mais tarde');
+      });
+  };
+
+  const resetPassword = (resetPassword: IResetPassword, token: string) => {
+    api
+      .patch(`/users/resetPassword/${token}`, {
+        password: resetPassword.password,
+      })
+      .then(() => {
+        toast.success('Senha atualizada com sucesso !');
+        navigate('/login');
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error('Erro ao atualizar a senha');
+      });
+  };
+
+
   return (
     <UserContext.Provider
       value={{
@@ -123,6 +154,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         loginUser,
         logoutUser,
         getUserProfile,
+        sendEmail,
+        resetPassword
       }}
     >
       {children}

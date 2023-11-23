@@ -5,7 +5,7 @@ import { ModalContext } from "../../providers/modal";
 import { HeaderContainerStyled, LogoLinkStyled, NavStyled } from "./style";
 import { useState, useContext } from "react";
 import { RiMenuFill } from "react-icons/ri";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../providers/user/userProvider";
 
 export const HeaderComponents = () => {
@@ -21,9 +21,9 @@ export const HeaderComponents = () => {
   };
   const navigate = useNavigate();
 
-  const navigateTo = (path:string) => {
-    navigate(path)
-  }
+  const navigateTo = (path: string) => {
+    navigate(path);
+  };
 
   return (
     <HeaderContainerStyled>
@@ -32,24 +32,20 @@ export const HeaderComponents = () => {
       </LogoLinkStyled>
       <RiMenuFill onClick={toggleMenu} className="mobile" />
       <NavStyled isVisible={menuIsVisible}>
-
-
         {isLoggedIn ? (
           <>
             <button>EDITAR PERFIL</button>
             <button>DELETAR CONTA</button>
             <button onClick={() => logoutUser()}>Sair</button>
-              
           </>
         ) : (
           <>
-            <button onClick={()=> navigateTo("/vacancies")} >VAGAS</button>
+            <button onClick={() => navigateTo("/vacancies")}>VAGAS</button>
             <Link to={"/AboutUs"}>SOBRE NÓS</Link>
-            <button onClick={()=> navigateTo("/contact")} >CONTATO</button>
+            <button onClick={() => navigateTo("/contact")}>CONTATO</button>
             <button onClick={() => setModalOpen(<LoginForm />)}>ENTRAR</button>
           </>
         )}
-
       </NavStyled>
     </HeaderContainerStyled>
   );

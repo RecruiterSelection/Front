@@ -1,6 +1,10 @@
 export interface IVacanciesContext {
-  getAllVacancies: () => Promise<IVacancie[] | undefined>;
+  getAllVacancies: (
+    page: string,
+    limit: string
+  ) => Promise<IRequestAllVancancies | undefined>;
   vacancies: IVacancie[];
+  totalPages: number | null | undefined;
 }
 
 export interface IProviderProps {
@@ -29,4 +33,10 @@ export interface ICreateVacancie {
   benefits: string;
   location: string;
   jobType: "FULL_TIME" | "PART_TIME" | "FREELANCE";
+}
+
+export interface IRequestAllVancancies {
+  jobs: IVacancie[];
+  total: number;
+  totalPages: number | null;
 }
