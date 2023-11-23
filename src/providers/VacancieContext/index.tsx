@@ -1,78 +1,42 @@
 import { createContext, useState } from "react";
-import { IProviderProps, IVacanciesContext } from "./types";
+import { ICreateVacancie, IProviderProps, IVacancie, IVacanciesContext } from "./types";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
 
 export const VacancieContext = createContext({} as IVacanciesContext);
 
-const vacancie = [
-  {
-    title: "Desenvolvedor Front-end",
-    type: "remoto",
-    time: "integral",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora nisi, ab voluptatum id consectetur temporibus cupiditate ea maxime incidunt suscipit pariatur fugiat nemo culpa earum repudiandae adipisci repellendus odio? Quam?",
-    requireds:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora nisi, ab voluptatum id consectetur temporibus cupiditate ea maxime incidunt suscipit pariatur fugiat nemo culpa earum repudiandae adipisci repellendus odio? Quam?",
-  },
-  {
-    title: "Desenvolvedor Back-end",
-    type: "remoto",
-    time: "integral",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora nisi, ab voluptatum id consectetur temporibus cupiditate ea maxime incidunt suscipit pariatur fugiat nemo culpa earum repudiandae adipisci repellendus odio? Quam?",
-    requireds:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora nisi, ab voluptatum id consectetur temporibus cupiditate ea maxime incidunt suscipit pariatur fugiat nemo culpa earum repudiandae adipisci repellendus odio? Quam?",
-  },
-  {
-    title: "Desenvolvedor Full-Stack senior",
-    type: "remoto",
-    time: "integral",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora nisi, ab voluptatum id consectetur temporibus cupiditate ea maxime incidunt suscipit pariatur fugiat nemo culpa earum repudiandae adipisci repellendus odio? Quam?",
-    requireds:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora nisi, ab voluptatum id consectetur temporibus cupiditate ea maxime incidunt suscipit pariatur fugiat nemo culpa earum repudiandae adipisci repellendus odio? Quam?",
-  },
-  {
-    title: "Desenvolvedor Full Stack junior",
-    type: "remoto",
-    time: "integral",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora nisi, ab voluptatum id consectetur temporibus cupiditate ea maxime incidunt suscipit pariatur fugiat nemo culpa earum repudiandae adipisci repellendus odio? Quam?",
-    requireds:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora nisi, ab voluptatum id consectetur temporibus cupiditate ea maxime incidunt suscipit pariatur fugiat nemo culpa earum repudiandae adipisci repellendus odio? Quam?",
-  },
-];
+
 
 export const VacancieProvider = ({ children }: IProviderProps) => {
-  const [vacancies, SetVacancies] = useState([...vacancie]);
+  const [vacancies, setVacancies] = useState<IVacancie[]>([]);
 
-  const createVacancie = async (data: any) => {
-    await api
-      .post("/vacancies", data)
-      .then((res) => {
-        SetVacancies(res.data);
-        toast.success("Vaga criada com succeso!");
-      })
-      .catch((err) => console.error(err));
+  const createVacancie = async (data: ICreateVacancie): Promise<IVacancie | undefined> => {
+    try{
+      const response = await api.post('/vacancies', data);
+      toast("Vaga criada com sucesso.")
+      return response.data
+    } catch(error){
+      console.log(error)
+    }
   };
 
-  const getVacancie = async () => {
-    await api
-      .get(`/vacancies`, {
+  const getAllVacancies = async ():Promise<IVacancie[] | undefined> => {
+    try{
+      const response = await api.get('/jobs', {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
+          Authorization: `Bearer ${localStorage.getItem('@TOKEN')}`,
         },
-      })
-      .then((res) => {
-        SetVacancies(res.data);
-      })
-      .catch((err) => console.error(err));
+      });
+      setVacancies(response.data)
+      return response.data
+    } catch(error){
+      console.log(error)
+    }
   };
 
   const updateVacancie = async (id: number, data: any) => {
     await api
-      .patch(`/vacancies/${id}`, data, {
+      .patch(`/jobs/${id}`, data, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
         },
@@ -86,7 +50,7 @@ export const VacancieProvider = ({ children }: IProviderProps) => {
 
   const deleteVacancie = async (id: number) => {
     await api
-      .delete(`/vacancies/${id}`)
+      .delete(`/jobs/${id}`)
       .then(() => toast.success("Vaga deletada com sucesso"))
       .catch((err) => console.error(err));
   };
@@ -94,12 +58,7 @@ export const VacancieProvider = ({ children }: IProviderProps) => {
   return (
     <VacancieContext.Provider
       value={{
-        vacancies,
-        SetVacancies,
-        createVacancie,
-        getVacancie,
-        updateVacancie,
-        deleteVacancie,
+        getAllVacancies, vacancies
       }}
     >
       {children}

@@ -8,28 +8,35 @@ import {
 } from "./style";
 import { ModalContext } from "../../providers/modal";
 import { useContext } from "react";
+import { VacanciesComponent } from "../../components/Vacancies";
+import { LoginForm } from "../LoginModal/loginForm";
 
 export const HomePage = () => {
-  const { openModal } = useContext(ModalContext);
+  const { setModalOpen} = useContext(ModalContext);
 
   const handleOpenModal = () => {
-    openModal("login");
+    setModalOpen(<LoginForm/>);
   };
 
   return (
     <>
       <HeaderComponents />
       <MainStyled>
-        <img src={home} alt="homem sentado com uma escrivaninha e computador" />
-        <SectionStyled>
-          <ContainerPhrase>
-            <h2>DESCUBRA</h2>
-            <p>as melhores vagas e faça sua carreira decolar</p>
-          </ContainerPhrase>
-          <ContainerButton>
-            <button onClick={handleOpenModal}>ENTRAR</button>
-          </ContainerButton>
-        </SectionStyled>
+        <div className="inner_section_wrapper">
+          <img src={home} alt="homem sentado com uma escrivaninha e computador" />
+          <SectionStyled>
+            <ContainerPhrase>
+              <h2>DESCUBRA</h2>
+              <p>as melhores vagas e faça sua carreira decolar</p>
+            </ContainerPhrase>
+            <ContainerButton>
+              <button onClick={handleOpenModal}>ENTRAR</button>
+            </ContainerButton>
+          </SectionStyled>
+        </div>
+        <div>
+          <VacanciesComponent/>
+        </div>
       </MainStyled>
     </>
   );

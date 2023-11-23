@@ -8,12 +8,19 @@ export const MainStyled = styled.main`
   overflow: auto;
   padding-bottom: 50px;
 
+  .inner_section_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
   img {
     height: 355px;
   }
 
   @media (min-width: 1024px) {
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
 
     img {

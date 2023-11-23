@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import { LoginForm } from "../../pages/LoginPage/loginForm";
+import { LoginForm } from "../../pages/LoginModal/loginForm";
 import { ModalContext } from "../../providers/modal";
 import { HeaderContainerStyled, LogoLinkStyled, NavStyled } from "./style";
 import { useState, useContext } from "react";
