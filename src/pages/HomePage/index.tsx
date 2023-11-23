@@ -8,15 +8,10 @@ import {
 } from "./style";
 import { ModalContext } from "../../providers/modal";
 import { useContext } from "react";
-import { VacanciesComponent } from "../../components/Vacancies";
 import { LoginForm } from "../LoginModal/loginForm";
 
 export const HomePage = () => {
   const { setModalOpen} = useContext(ModalContext);
-
-  const handleOpenModal = () => {
-    setModalOpen(<LoginForm/>);
-  };
 
   return (
     <>
@@ -30,13 +25,10 @@ export const HomePage = () => {
               <p>as melhores vagas e faça sua carreira decolar</p>
             </ContainerPhrase>
             <ContainerButton>
-              <button onClick={handleOpenModal}>ENTRAR</button>
+              <button onClick={() => setModalOpen(<LoginForm />)}>ENTRAR</button>
             </ContainerButton>
           </SectionStyled>
         </div>
-        {/* <div> */}
-          {/* <VacanciesComponent/> */}
-        {/* </div> */}
       </MainStyled>
     </>
   );
