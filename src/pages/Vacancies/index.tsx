@@ -1,30 +1,27 @@
 import { HeaderComponents } from "../../components/Header";
-import { CardVacancie } from "./CardVacancie";
-import { VacanciesStyle } from "./style";
+import { VacanciesStyledContainer } from "./style";
 import { IoSearch } from "react-icons/io5";
-import { useContext } from "react";
-import { VacancieContext } from "../../providers/VacancieContext";
 import { VacanciesComponent } from "../../components/Vacancies";
+import { useState } from "react";
 
 export const VacanciesPage = () => {
-  const { vacancies } = useContext(VacancieContext);
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <>
       <HeaderComponents />
-      <VacanciesStyle>
+      <VacanciesStyledContainer>
         <form>
-          <IoSearch />
-          <input placeholder="Sua busca aqui" type="text" />
+          <IoSearch style={{ color: "black" }} />
+          <input
+            placeholder="Sua busca aqui"
+            type="text"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
           <button type="submit">Pesquisar</button>
         </form>
-        <VacanciesComponent/>
-        {/* <ul>
-          {vacancies.map((vacancie: any) => (
-            <CardVacancie vacancie={vacancie} />
-          ))}
-        </ul> */}
-      </VacanciesStyle>
+        <VacanciesComponent searchTerm={searchTerm} />
+      </VacanciesStyledContainer>
     </>
   );
 };
