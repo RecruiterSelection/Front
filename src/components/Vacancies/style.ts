@@ -10,6 +10,8 @@ export const StyledVacanciesContainer = styled.ul`
   gap: 1.5rem;
   place-items: center;
 
+  margin-bottom: 2rem;
+
   @media (max-width: ${phoneBreakPoint}) {
     grid-template-columns: repeat(1, 1fr);
   }

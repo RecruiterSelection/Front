@@ -34,9 +34,9 @@ export const HomePage = () => {
             </ContainerButton>
           </SectionStyled>
         </div>
-        <div>
-          <VacanciesComponent/>
-        </div>
+        {/* <div> */}
+          {/* <VacanciesComponent/> */}
+        {/* </div> */}
       </MainStyled>
     </>
   );
