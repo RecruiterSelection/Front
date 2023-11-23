@@ -9,7 +9,6 @@ import { ModalContext } from "../providers/modal";
 
 import { ProtectedRoute } from "./protectRoutes";
 import { ProtectedLayout } from "./protectedLayout";
-import { FooterComponent } from "../components/Footer";
 import { ContactPage } from "../pages/Contact";
 import { DashBoardPage } from "../pages/DashBoardPage";
 
@@ -35,6 +34,7 @@ export const RoutesMain = () => {
         </Route>
 
       </Routes>
+      
     </>
   );
 };

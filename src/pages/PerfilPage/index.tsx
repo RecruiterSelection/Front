@@ -5,6 +5,7 @@ import { FaPencil } from "react-icons/fa6";
 import { CgAdd } from "react-icons/cg";
 import { FormPerfilCandidate } from "../../components/Forms/Perfil/PerfilCandidate";
 import { FormPerfilRecruiter } from "../../components/Forms/Perfil/PerfilRecruiter";
+import { FooterComponent } from "../../components/Footer";
 
 export const PerfilPage = () => {
   const userIsRecruiter = false;
@@ -88,6 +89,7 @@ export const PerfilPage = () => {
             </div>
           </div>
         </PerfilStyled> */}
+         < FooterComponent/>
       </ContainerPerfilStyled>
     </>
   );

@@ -5,10 +5,13 @@ const phoneBreakPoint = "576px";
 export const StyledFooter = styled.footer`
   background-color: var(--brand--brand3);
   padding: 0;
-  position: sticky;
+  position: static;
   bottom: 0;
   max-width: 100vw;
   height: 50px;
+  width: 100%;
+
+  margin-top: 2rem;
 `;
 
 export const LogoWrapper = styled.div``;

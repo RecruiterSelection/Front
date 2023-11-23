@@ -8,8 +8,7 @@ import {
 } from "./style";
 import { ModalContext } from "../../providers/modal";
 import { useContext } from "react";
-import { VacanciesComponent } from "../../components/Vacancies";
-import { LoginForm } from "../LoginPage/loginForm";
+import { LoginForm } from "../LoginModal/loginForm";
 
 export const HomePage = () => {
   const { setModalOpen} = useContext(ModalContext);
@@ -30,9 +29,6 @@ export const HomePage = () => {
             </ContainerButton>
           </SectionStyled>
         </div>
-        {/* <div> */}
-          {/* <VacanciesComponent/> */}
-        {/* </div> */}
       </MainStyled>
     </>
   );
