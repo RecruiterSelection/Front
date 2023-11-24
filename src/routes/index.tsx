@@ -11,6 +11,7 @@ import { ProtectedLayout } from "./protectedLayout";
 import { ContactPage } from "../pages/Contact";
 import { DashBoardPage } from "../pages/DashBoardPage";
 import { ResetPasswordPage } from "../pages/ResetPassword";
+import React from "react";
 
 export const RoutesMain = () => {
   const { modalOpen } = useContext(ModalContext);

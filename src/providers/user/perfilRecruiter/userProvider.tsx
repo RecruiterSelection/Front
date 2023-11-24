@@ -10,9 +10,9 @@ import {
   TUpdatePerfilRecruiter,
 } from "./interface";
 
-export const UserContext = createContext({} as IPerfilContext);
+export const RecruiterContext = createContext({} as IPerfilContext);
 
-export const UserProvider = ({ children }: IDefaultProviderProps) => {
+export const RecruiterProvider = ({ children }: IDefaultProviderProps) => {
   const [profile, setProfile] = useState<IPerfilRecruiter>(
     {} as IPerfilRecruiter
   );
@@ -63,14 +63,13 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   return (
-    <UserContext.Provider
+    <RecruiterContext.Provider
       value={{
         createPerfilRecruiter,
         getRecruiterProfile,
         updateRecruiterProfile,
-      }}
-    >
+      }}>
       {children}
-    </UserContext.Provider>
+    </RecruiterContext.Provider>
   );
 };

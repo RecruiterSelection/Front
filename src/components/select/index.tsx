@@ -1,5 +1,6 @@
 import { UseFormRegisterReturn } from "react-hook-form";
 import { FieldStyled } from "./style";
+import React from "react";
 
 export interface ISelect {
   label?: string;

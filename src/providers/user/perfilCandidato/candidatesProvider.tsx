@@ -2,23 +2,25 @@ import { createContext, useState } from "react";
 import { api } from "../../../services/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-//import { useNavigate } from "react-router-dom";
 import { IDefaultProviderProps } from "../interface";
 import {
   IPerfilCandidate,
+  IPerfilCandidateWithEmail,
   IPerfilContext,
   IRegisterPerfilCandidate,
   TUpdatePerfilCandidate,
 } from "./interface";
+import React from "react";
 
-export const UserContext = createContext({} as IPerfilContext);
+export const CandidateContext = createContext({} as IPerfilContext);
 
-export const UserProvider = ({ children }: IDefaultProviderProps) => {
+export const CandidateProvider = ({ children }: IDefaultProviderProps) => {
   const [profile, setProfile] = useState<IPerfilCandidate>(
     {} as IPerfilCandidate
   );
-
-  //const navigate = useNavigate();
+  const [candidateWithEmail, setCandidateWithEmail] = useState<
+    IPerfilCandidateWithEmail | undefined
+  >();
 
   const createPerfilCandidate = async (
     data: IRegisterPerfilCandidate,
@@ -31,6 +33,23 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         toast.success("Perfil criado com succeso!");
       })
       .catch((err) => console.error(err));
+  };
+
+  const getCandidateByEmail = async (
+    email: string
+  ): Promise<IPerfilCandidateWithEmail | undefined> => {
+    try {
+      const response = await api.get(`/candidates/email/${email}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
+        },
+      });
+      console.log(response.data, "getCandidateByEmail");
+      setCandidateWithEmail(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getCandidateProfile = async (id: number) => {
@@ -64,14 +83,15 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   return (
-    <UserContext.Provider
+    <CandidateContext.Provider
       value={{
         createPerfilCandidate,
         getCandidateProfile,
         updateCandidateProfile,
-      }}
-    >
+        candidateWithEmail,
+        getCandidateByEmail,
+      }}>
       {children}
-    </UserContext.Provider>
+    </CandidateContext.Provider>
   );
 };
