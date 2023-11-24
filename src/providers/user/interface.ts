@@ -6,6 +6,7 @@ export interface IUser {
   id: number;
   role: string;
   updated_at: string;
+  firstAccess: boolean;
 }
 
 export interface ILoginUser {

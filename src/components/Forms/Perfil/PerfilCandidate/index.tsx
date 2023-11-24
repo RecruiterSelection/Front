@@ -29,7 +29,7 @@ export const FormPerfilCandidate = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(creatNewProfile)}>
+      <form className="formStyle" onSubmit={handleSubmit(creatNewProfile)}>
         <h2>Candidate</h2>
 
         <Input
