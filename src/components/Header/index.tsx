@@ -8,6 +8,7 @@ import { RiMenuFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../providers/user/userProvider";
 import { DeleteUserModal } from "../Modal/DeleteUser";
+import React from "react";
 
 export const HeaderComponents = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);

@@ -10,6 +10,7 @@ import {
   IRegisterPerfilCandidate,
   TUpdatePerfilCandidate,
 } from "./interface";
+import React from "react";
 
 export const CandidateContext = createContext({} as IPerfilContext);
 
@@ -43,7 +44,7 @@ export const CandidateProvider = ({ children }: IDefaultProviderProps) => {
           Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
         },
       });
-      console.log(response.data);
+      console.log(response.data, "getCandidateByEmail");
       setCandidateWithEmail(response.data);
       return response.data;
     } catch (error) {

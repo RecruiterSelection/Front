@@ -5,6 +5,9 @@ export interface IDefaultCandidateTechSkillsProps {
 export interface ICandidateTechSkillContext {
   getCandidateTechSkills: () => Promise<TCandidateSkillsResponse | undefined>;
   candidateTechSkills: TCandidateSkillsResponse;
+  createNewCandidateTechSkill: () => Promise<
+    INewCandidateTechSkill | undefined
+  >;
 }
 
 interface Candidate {
@@ -30,3 +33,9 @@ export interface ICandidateSkill {
 }
 
 export type TCandidateSkillsResponse = ICandidateSkill[];
+
+export interface INewCandidateTechSkill {
+  id: number;
+  candidateId: number;
+  skillId: number;
+}

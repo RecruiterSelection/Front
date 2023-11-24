@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { ModalContext } from "../modal";
 import { LoginForm } from "../../pages/LoginModal/loginForm";
+import React from "react";
 
 export const UserContext = createContext({} as IUserContext);
 
@@ -49,7 +50,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       .then((res) => {
         setUserData(res.data);
         localStorage.setItem("@userMail", res.data.email);
-        console.log(res.data);
+        console.log(res.data, "getUserProfile");
       })
       .catch((err) => console.error(err));
   };

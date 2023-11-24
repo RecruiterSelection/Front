@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const phoneBreakPoint = "640px";
+
 export const StyledDashboardContainer = styled.main`
   /* height: calc(100vh - 60px - 40px); */
   min-height: calc(100vh - 40px);
@@ -12,7 +14,8 @@ export const StyledDashboardContainer = styled.main`
 `;
 
 export const StyledUserDataContainer = styled.div`
-  width: 500px;
+  max-width: 600px;
+  width: 100%;
   min-height: 400px;
   background-color: var(--white-fixed);
   border-radius: 12px;
@@ -31,12 +34,36 @@ export const StyledUserDataContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
+
+    @media (max-width: ${phoneBreakPoint}) {
+      flex-direction: column;
+    }
   }
 
   #candidate_info_div > div:nth-child(2) > img {
     border-radius: 50%;
     width: 100px;
     margin-right: 3rem;
+  }
+
+  .skills_div {
+    button {
+      color: var(--white-fixed);
+      font-size: var(--text--body0);
+      padding: 10px 30px;
+      background-color: var(--random--random-1);
+      border: none;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: var(--random--random-2);
+      transition: 0.3s;
+    }
+
+    @media (max-width: ${phoneBreakPoint}) {
+      align-self: center;
+    }
   }
 
   .info-enter {

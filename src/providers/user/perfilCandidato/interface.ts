@@ -1,15 +1,17 @@
 import { DeepPartial } from "react-hook-form";
 
 export interface IPerfilCandidate {
-  id: number;
+  profileId: number;
+  userId: number;
   firstName: string;
   lastName: string;
   contactNumber: string;
   address: string;
   education: string;
-  skills: string;
   experience: string;
   references: string;
+  created_at: Date;
+  updated_at: Date;
 }
 
 export interface IPerfilCandidateWithEmail extends IPerfilCandidate {
@@ -25,7 +27,6 @@ export interface IRegisterPerfilCandidate {
   contactNumber: string;
   address: string;
   education: string;
-  skills: string;
   experience: string;
   references: string;
 }
