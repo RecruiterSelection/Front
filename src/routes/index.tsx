@@ -6,11 +6,11 @@ import { PerfilPage } from "../pages/PerfilPage";
 import { Modal } from "../components/Modal";
 import { useContext } from "react";
 import { ModalContext } from "../providers/modal";
-
 import { ProtectedRoute } from "./protectRoutes";
 import { ProtectedLayout } from "./protectedLayout";
 import { ContactPage } from "../pages/Contact";
 import { DashBoardPage } from "../pages/DashBoardPage";
+import { ResetPasswordPage } from "../pages/ResetPassword";
 
 export const RoutesMain = () => {
   const { modalOpen } = useContext(ModalContext);
@@ -29,6 +29,7 @@ export const RoutesMain = () => {
             <Route path="/perfil" element={<PerfilPage />} />
           </Route>
         </Route>
+        <Route path="/resetPassword/:token" element={<ResetPasswordPage />} />
       </Routes>
     </>
   );
