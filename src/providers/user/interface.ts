@@ -1,9 +1,11 @@
 import { DeepPartial } from "react-hook-form";
 
 export interface IUser {
-  id: number;
+  created_at: string;
   email: string;
+  id: number;
   role: string;
+  updated_at: string;
 }
 
 export interface ILoginUser {

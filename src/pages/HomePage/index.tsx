@@ -9,27 +9,34 @@ import {
 import { ModalContext } from "../../providers/modal";
 import { useContext } from "react";
 import { LoginForm } from "../LoginModal/loginForm";
+import { FooterComponent } from "../../components/Footer";
 
 export const HomePage = () => {
-  const { setModalOpen} = useContext(ModalContext);
+  const { setModalOpen } = useContext(ModalContext);
 
   return (
     <>
       <HeaderComponents />
       <MainStyled>
         <div className="inner_section_wrapper">
-          <img src={home} alt="homem sentado com uma escrivaninha e computador" />
+          <img
+            src={home}
+            alt="homem sentado com uma escrivaninha e computador"
+          />
           <SectionStyled>
             <ContainerPhrase>
               <h2>DESCUBRA</h2>
               <p>as melhores vagas e faça sua carreira decolar</p>
             </ContainerPhrase>
             <ContainerButton>
-              <button onClick={() => setModalOpen(<LoginForm />)}>ENTRAR</button>
+              <button onClick={() => setModalOpen(<LoginForm />)}>
+                ENTRAR
+              </button>
             </ContainerButton>
           </SectionStyled>
         </div>
       </MainStyled>
+      <FooterComponent />
     </>
   );
 };

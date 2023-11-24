@@ -9,6 +9,7 @@ export const MainStyled = styled.main`
   align-items: center;
   overflow: auto;
   padding-bottom: 50px;
+  height: 90vh;
 
   .inner_section_wrapper {
     display: flex;

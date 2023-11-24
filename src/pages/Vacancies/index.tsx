@@ -3,6 +3,7 @@ import { VacanciesStyledContainer } from "./style";
 import { IoSearch } from "react-icons/io5";
 import { VacanciesComponent } from "../../components/Vacancies";
 import { FormEvent, useState } from "react";
+import { FooterComponent } from "../../components/Footer";
 
 export const VacanciesPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,6 +31,7 @@ export const VacanciesPage = () => {
         </form>
         <VacanciesComponent searchTerm={searchTerm} />
       </VacanciesStyledContainer>
+      <FooterComponent />
     </>
   );
 };
