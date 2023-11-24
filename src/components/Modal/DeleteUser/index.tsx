@@ -11,7 +11,9 @@ export const DeleteUserModal = () => {
       <h1>Tem certeza que deseja excluir sua conta?</h1>
       <div>
         <button onClick={() => setModalOpen(null)}>Cancelar</button>
-        <button onClick={() => deleteUser()}>Confirmar</button>
+        <button onClick={() => deleteUser()} id="delete_button">
+          Confirmar
+        </button>
       </div>
     </DivStyled>
   );

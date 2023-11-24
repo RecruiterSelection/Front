@@ -52,6 +52,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       })
       .catch((err) => console.error(err));
   };
+
   const getUser = async () => {
     await api
       .get(`/users`, {
@@ -100,11 +101,10 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         localStorage.setItem("@TOKEN", res.data.accessToken);
         localStorage.setItem("@userId", res.data.userId);
 
-        toast.success("Login realizado com sucesso!");
         getUserProfile(res.data.userId);
-        setTimeout(() => {
-          navigate("/Dashboard");
-        }, 3000);
+
+        navigate("/Dashboard");
+        toast.success("Login realizado com sucesso!");
       })
       .catch((err) => {
         toast.error("Email ou Senha incorreta");
@@ -159,8 +159,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         getUserProfile,
         sendEmail,
         resetPassword,
-      }}
-    >
+      }}>
       {children}
     </UserContext.Provider>
   );
