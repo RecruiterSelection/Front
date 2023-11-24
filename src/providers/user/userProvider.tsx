@@ -109,9 +109,9 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     navigate("/");
   };
 
-  const sendEmail = (sendEmailResetPassword: ISendEmail) => {
+  const sendEmail = (data: ISendEmail) => {
     api
-      .post('/users/resetPassword', sendEmailResetPassword)
+      .post('/users/resetPassword', data)
       .then(() => {
         toast.success('E-mail enviado com sucesso !');
         navigate('/');
@@ -122,14 +122,14 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       });
   };
 
-  const resetPassword = (resetPassword: IResetPassword, token: string) => {
+  const resetPassword = (data: IResetPassword, token: string) => {
     api
       .patch(`/users/resetPassword/${token}`, {
-        password: resetPassword.password,
+        password: data.password,
       })
       .then(() => {
         toast.success('Senha atualizada com sucesso !');
-        navigate('/login');
+        navigate('/');
       })
       .catch((err) => {
         console.log(err);
