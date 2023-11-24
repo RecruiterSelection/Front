@@ -1,9 +1,8 @@
 import { createContext, useState } from "react";
-
 import { api } from "../../../services/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { IDefaultProviderProps } from "../interface";
 import {
   IPerfilCandidate,
@@ -64,5 +63,15 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       .catch((err) => toast.error(err));
   };
 
-  return <UserContext.Provider value={{}}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider
+      value={{
+        createPerfilCandidate,
+        getCandidateProfile,
+        updateCandidateProfile,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
 };

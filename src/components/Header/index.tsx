@@ -7,6 +7,7 @@ import { useState, useContext } from "react";
 import { RiMenuFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../providers/user/userProvider";
+import { DeleteUserModal } from "../Modal/DeleteUser";
 
 export const HeaderComponents = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
@@ -35,7 +36,9 @@ export const HeaderComponents = () => {
         {isLoggedIn ? (
           <>
             <button>EDITAR PERFIL</button>
-            <button>DELETAR CONTA</button>
+            <button onClick={() => setModalOpen(<DeleteUserModal />)}>
+              DELETAR CONTA
+            </button>
             <button onClick={() => logoutUser()}>Sair</button>
           </>
         ) : (
