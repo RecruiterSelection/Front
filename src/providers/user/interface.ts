@@ -20,7 +20,7 @@ export interface IRegisterUser {
 }
 
 export interface IUserContext {
-  user: IUser | null;
+  userData: IUser | null;
   createUser: (data: IRegisterUser) => Promise<void>;
   getUser: () => Promise<void>;
   updateUser: (data: TUpdateUser) => Promise<void>;

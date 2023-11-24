@@ -30,4 +30,12 @@ export const DivStyled = styled.div`
       }
     }
   }
+
+  #delete_button {
+    background-color: var(--feedback--alert-1);
+  }
+
+  #delete_button:hover {
+    filter: brightness(1.1);
+  }
 `;
