@@ -62,5 +62,15 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       .catch((err) => toast.error(err));
   };
 
-  return <UserContext.Provider value={{}}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider
+      value={{
+        createPerfilRecruiter,
+        getRecruiterProfile,
+        updateRecruiterProfile,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
 };

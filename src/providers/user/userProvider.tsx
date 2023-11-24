@@ -84,7 +84,11 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const deleteUser = async () => {
     await api
       .delete(`/users/${user.id}`)
-      .then(() => toast.success("Perfil deletado com sucesso"))
+      .then(() => {
+        toast.success("Perfil deletado com sucesso");
+        setModalOpen(null);
+        logoutUser();
+      })
       .catch((err) => console.error(err));
   };
 
@@ -116,14 +120,14 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
 
   const sendEmail = (data: ISendEmail) => {
     api
-      .post('/users/resetPassword', data)
+      .post("/users/resetPassword", data)
       .then(() => {
-        toast.success('E-mail enviado com sucesso !');
-        navigate('/');
+        toast.success("E-mail enviado com sucesso !");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
-        toast.error('Erro ao enviar o e-mail, tente novamente mais tarde');
+        toast.error("Erro ao enviar o e-mail, tente novamente mais tarde");
       });
   };
 
@@ -133,15 +137,14 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         password: data.password,
       })
       .then(() => {
-        toast.success('Senha atualizada com sucesso !');
-        navigate('/');
+        toast.success("Senha atualizada com sucesso !");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
-        toast.error('Erro ao atualizar a senha');
+        toast.error("Erro ao atualizar a senha");
       });
   };
-
 
   return (
     <UserContext.Provider
@@ -155,7 +158,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         logoutUser,
         getUserProfile,
         sendEmail,
-        resetPassword
+        resetPassword,
       }}
     >
       {children}
