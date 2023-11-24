@@ -12,6 +12,13 @@ export interface IPerfilCandidate {
   references: string;
 }
 
+export interface IPerfilCandidateWithEmail extends IPerfilCandidate {
+  user: {
+    id: number;
+    email: string;
+  };
+}
+
 export interface IRegisterPerfilCandidate {
   firstName: string;
   lastName: string;
@@ -34,7 +41,11 @@ export interface IPerfilContext {
   updateCandidateProfile: (
     data: TUpdatePerfilCandidate,
     id: number
-  ) => Promise<void>;  
+  ) => Promise<void>;
+  candidateWithEmail: IPerfilCandidateWithEmail | undefined;
+  getCandidateByEmail: (
+    email: string
+  ) => Promise<IPerfilCandidateWithEmail | undefined>;
 }
 
 export interface IDefaultProviderProps {

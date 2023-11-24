@@ -19,7 +19,7 @@ import { LoginForm } from "../../pages/LoginModal/loginForm";
 export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IDefaultProviderProps) => {
-  const [user, setUser] = useState<IUser>({} as IUser);
+  const [userData, setUserData] = useState<IUser>({} as IUser);
   const { setModalOpen } = useContext(ModalContext);
 
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     await api
       .post("/users", data)
       .then((res) => {
-        setUser(res.data);
+        setUserData(res.data);
         toast.success("Perfil criado com succeso!");
         setTimeout(() => {
           setModalOpen(<LoginForm />);
@@ -47,7 +47,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         },
       })
       .then((res) => {
-        setUser(res.data);
+        setUserData(res.data);
+        localStorage.setItem("@userMail", res.data.email);
         console.log(res.data);
       })
       .catch((err) => console.error(err));
@@ -61,21 +62,21 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         },
       })
       .then((res) => {
-        setUser(res.data);
+        setUserData(res.data);
       })
       .catch((err) => console.error(err));
   };
 
   const updateUser = async (data: TUpdateUser) => {
     await api
-      .patch(`/users/${user.id}`, data, {
+      .patch(`/users/${userData.id}`, data, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
         },
       })
       .then((res) => {
         console.log(res.data);
-        setUser(res.data);
+        setUserData(res.data);
         getUser();
         toast.success("Perfil editado com succeso!");
       })
@@ -84,7 +85,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
 
   const deleteUser = async () => {
     await api
-      .delete(`/users/${user.id}`)
+      .delete(`/users/${userData.id}`)
       .then(() => {
         toast.success("Perfil deletado com sucesso");
         setModalOpen(null);
@@ -113,7 +114,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   const logoutUser = () => {
-    setUser({} as IUser);
+    setUserData({} as IUser);
     localStorage.removeItem("@TOKEN");
     navigate("/");
   };
@@ -149,7 +150,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   return (
     <UserContext.Provider
       value={{
-        user,
+        userData,
         createUser,
         getUser,
         updateUser,
