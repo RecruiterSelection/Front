@@ -4,10 +4,12 @@ import { StyledDashboardContainer, StyledUserDataContainer } from "./style";
 import { useContext, useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import avatar from "../../assets/avator-img.jpg";
+import { TechSkillsContext } from "../../providers/techSkillsProvider";
 
 export const DashBoardPage = () => {
   const { candidateWithEmail, getCandidateByEmail } =
     useContext(CandidateContext);
+  const { techSkills, getTechSkills } = useContext(TechSkillsContext);
 
   const [showCandidateInfo, setShowCandidateInfo] = useState(false);
   const userMail = localStorage.getItem("@userMail");
@@ -17,6 +19,7 @@ export const DashBoardPage = () => {
       getCandidateByEmail(userMail);
     }
     console.log(userMail);
+    getTechSkills();
   }, [userMail]);
 
   return (

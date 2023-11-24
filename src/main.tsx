@@ -2,17 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { App } from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { VacancieProvider } from "./providers/VacancieContext";
-import { CandidateProvider } from "./providers/user/perfilCandidato/userProvider";
+import { ProvidersComponent } from "./providers/providers";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <CandidateProvider>
-        <VacancieProvider>
-          <App />
-        </VacancieProvider>
-      </CandidateProvider>
+      <ProvidersComponent>
+        <App />
+      </ProvidersComponent>
     </BrowserRouter>
   </React.StrictMode>
 );
