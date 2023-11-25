@@ -44,7 +44,7 @@ export interface IPerfilContext {
   updateCandidateProfile: (
     data: TUpdatePerfilCandidate,
     id: number
-  ) => Promise<IUpdatePerfilCandidate | undefined>;
+  ) => Promise<IPerfilCandidateWithEmail | undefined>;
 
   candidateWithEmail: IPerfilCandidateWithEmail | undefined;
   getCandidateByEmail: (

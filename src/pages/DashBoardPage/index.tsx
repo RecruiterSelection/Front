@@ -12,6 +12,7 @@ import { UserContext } from "../../providers/user/userProvider";
 import { useNavigate } from "react-router";
 import { FaEdit } from "react-icons/fa";
 import { EditCandidateInfoModal } from "../../components/editCandidateInfoModal";
+import { ApplicationsComponent } from "../../components/applications";
 
 export const DashBoardPage = () => {
   const { candidateWithEmail, getCandidateByEmail } =
@@ -19,9 +20,8 @@ export const DashBoardPage = () => {
   // const { techSkills, getTechSkills } = useContext(TechSkillsContext);
   const { getCandidateTechSkills } = useContext(CandidateTechSkillsContext);
   const { setModalOpen } = useContext(ModalContext);
-  const { getUserProfile, userData } = useContext(UserContext);
+  const { userData } = useContext(UserContext);
 
-  const [showCandidateInfo, setShowCandidateInfo] = useState(false);
   const userMail = localStorage.getItem("@userMail");
 
   const navigate = useNavigate();
@@ -69,6 +69,10 @@ export const DashBoardPage = () => {
                 <h1>Experiência</h1>
                 <p>{candidateWithEmail?.experience}</p>
               </div>
+              <div className="references_div">
+                <h1>Referências</h1>
+                <p>{candidateWithEmail?.references}</p>
+              </div>
             </div>
             <div
               id="icon_other_infos_div"
@@ -90,20 +94,26 @@ export const DashBoardPage = () => {
               Minhas Habilidades
             </button>
           </div>
+        </StyledUserDataContainer>
+        <ApplicationsComponent />
+      </StyledDashboardContainer>
 
-          {/* <button onClick={() => setShowCandidateInfo(!showCandidateInfo)}>
+      <FooterComponent />
+    </>
+  );
+};
+
+{
+  /* <button onClick={() => setShowCandidateInfo(!showCandidateInfo)}>
             {showCandidateInfo ? "Ocultar Informações" : "Mostrar Informações"}
-          </button> */}
-          {/* <CSSTransition
+          </button> */
+}
+{
+  /* <CSSTransition
             in={showCandidateInfo}
             timeout={250}
             classNames="info"
             unmountOnExit>
             <p></p>
-          </CSSTransition> */}
-        </StyledUserDataContainer>
-      </StyledDashboardContainer>
-      <FooterComponent />
-    </>
-  );
-};
+          </CSSTransition> */
+}

@@ -76,6 +76,10 @@ export const StyledAllSkillsContainer = styled.div`
   flex-direction: column;
   gap: 1.5rem;
 
+  border: var(--grey--scale--grey-7) solid 1px;
+  padding: 15px 20px;
+  border-radius: 12px;
+
   .tech_skills_ul {
     list-style: none;
     max-height: 30vh;

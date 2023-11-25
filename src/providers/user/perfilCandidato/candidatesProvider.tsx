@@ -64,7 +64,7 @@ export const CandidateProvider = ({ children }: IDefaultProviderProps) => {
   const updateCandidateProfile = async (
     data: TUpdatePerfilCandidate,
     id: number
-  ): Promise<IUpdatePerfilCandidate | undefined> => {
+  ): Promise<IPerfilCandidateWithEmail | undefined> => {
     try {
       const response = await api.patch(`/candidates/${id}`, data, {
         headers: {
@@ -72,8 +72,9 @@ export const CandidateProvider = ({ children }: IDefaultProviderProps) => {
         },
       });
       setProfile(response.data);
+      setCandidateWithEmail((prevData) => ({ ...prevData, ...response.data }));
       toast.success("Perfil editado com succeso.");
-      console.log(response.data, "updateCandidateProfile");
+
       return response.data;
     } catch (error) {
       console.log(error);
