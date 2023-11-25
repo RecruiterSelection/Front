@@ -22,10 +22,7 @@ export const CandidateProvider = ({ children }: IDefaultProviderProps) => {
     IPerfilCandidateWithEmail | undefined
   >();
 
-  const createPerfilCandidate = async (
-    data: IRegisterPerfilCandidate,
-    id: number
-  ) => {
+  const createPerfilCandidate = async (data: any, id: number) => {
     await api
       .post(`/candidates/${id}`, data)
       .then((res) => {
@@ -90,7 +87,8 @@ export const CandidateProvider = ({ children }: IDefaultProviderProps) => {
         updateCandidateProfile,
         candidateWithEmail,
         getCandidateByEmail,
-      }}>
+      }}
+    >
       {children}
     </CandidateContext.Provider>
   );

@@ -38,7 +38,9 @@ export interface IPerfilContext {
     data: IRegisterPerfilCandidate,
     id: number
   ) => Promise<void>;
+
   getCandidateProfile: (id: number) => Promise<void>;
+
   updateCandidateProfile: (
     data: TUpdatePerfilCandidate,
     id: number

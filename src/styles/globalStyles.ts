@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     body{
         background-color: var(--brand--brand1);
         color: white;
+        min-height: calc(100vh - 73px);
     }
 
     :root{

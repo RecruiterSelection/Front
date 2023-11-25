@@ -2,15 +2,29 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Input } from "../../../Input";
+import { Select } from "../../../select";
+import { useContext, useEffect } from "react";
+import { TechSkillsContext } from "../../../../providers/techSkillsProvider";
+import { UserContext } from "../../../../providers/user/userProvider";
+import { CandidateContext } from "../../../../providers/user/perfilCandidato/candidatesProvider";
+import { IRegisterPerfilCandidate } from "../../../../providers/user/perfilCandidato/interface";
 
 export const FormPerfilCandidate = () => {
+  const { getTechSkills, techSkills } = useContext(TechSkillsContext);
+  const { userData } = useContext(UserContext);
+  const { createPerfilCandidate } = useContext(CandidateContext);
+
+  useEffect(() => {
+    getTechSkills();
+  }, []);
+
   const schema = z.object({
     firstName: z.string().min(1, { message: "Obrigatório" }),
     lastName: z.string().min(1, { message: "Obrigatório" }),
     contactNumber: z.string().min(1, { message: "Obrigatório" }),
     address: z.string().min(1, { message: "Obrigatório" }),
     education: z.string().min(1, { message: "Obrigatório" }),
-    skills: z.string().min(1, { message: "Obrigatório" }),
+    // skills: z.string(),
     experience: z.string().min(1, { message: "Obrigatório" }),
     references: z.string().min(1, { message: "Obrigatório" }),
   });
@@ -23,13 +37,14 @@ export const FormPerfilCandidate = () => {
     resolver: zodResolver(schema),
   });
 
-  const creatNewProfile = (e) => {
-    console.log(e);
+  const creatNewProfile = (perfilData) => {
+    console.log(perfilData);
+    createPerfilCandidate(perfilData, Number(userData!.id));
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit(creatNewProfile)}>
+      <form className="formStyle" onSubmit={handleSubmit(creatNewProfile)}>
         <h2>Candidate</h2>
 
         <Input
@@ -73,13 +88,12 @@ export const FormPerfilCandidate = () => {
           label="Educação"
         />
 
-        <Input
-          register={register("skills")}
-          placeholder="Habilidades"
-          type="text"
+        {/* <Select
+          label="skills"
+          listOption={techSkills}
           key="Habilidades"
-          label="Habilidades"
-        />
+          register={register("skills")}
+        /> */}
 
         <Input
           register={register("experience")}
