@@ -7,7 +7,7 @@ import { UserContext } from "../../providers/user/userProvider";
 import { PerfilStyleEdit } from "../../components/Forms/Perfil/PerfilEdit";
 
 export const PerfilPage = () => {
-  const { user, getUserProfile } = useContext(UserContext);
+  const { userData, getUserProfile } = useContext(UserContext);
 
   useEffect(() => {
     getUserProfile(1);
@@ -15,9 +15,9 @@ export const PerfilPage = () => {
 
   return (
     <ContainerPerfilStyled>
-      {user!.firstAccess && (
+      {userData!.firstAccess && (
         <>
-          {user!.role == "RECRUITER" ? (
+          {userData!.role == "RECRUITER" ? (
             <FormPerfilRecruiter />
           ) : (
             <FormPerfilCandidate />
@@ -25,7 +25,7 @@ export const PerfilPage = () => {
         </>
       )}
 
-      {user!.firstAccess == false && <PerfilStyleEdit />}
+      {userData!.firstAccess == false && <PerfilStyleEdit />}
       <FooterComponent />
     </ContainerPerfilStyled>
   );
