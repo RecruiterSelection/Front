@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { DeepPartial } from "react-hook-form";
 
 export interface IUser {
@@ -31,6 +32,7 @@ export interface IUserContext {
   getUserProfile: (id: number) => void;
   sendEmail: (data: ISendEmail) => void;
   resetPassword: (data: IResetPassword, token: string) => void;
+  setUserData: Dispatch<SetStateAction<IUser>>;
 }
 
 export interface IDefaultProviderProps {

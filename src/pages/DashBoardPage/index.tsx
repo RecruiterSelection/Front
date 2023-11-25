@@ -36,7 +36,7 @@ export const DashBoardPage = () => {
     console.log(userMail);
     // getTechSkills();
     getCandidateTechSkills();
-  }, [userMail]);
+  }, [userMail, userData]);
 
   return (
     <>
@@ -61,6 +61,15 @@ export const DashBoardPage = () => {
               }}>
               Minhas Habilidades
             </button>
+          </div>
+          <div className="address_div">
+            <h1>Endereço</h1>
+          </div>
+          <div className="education_div">
+            <h1>Educação</h1>
+          </div>
+          <div className="experience_div">
+            <h1>Experiência</h1>
           </div>
           {/* <button onClick={() => setShowCandidateInfo(!showCandidateInfo)}>
             {showCandidateInfo ? "Ocultar Informações" : "Mostrar Informações"}
