@@ -30,9 +30,10 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       .then((res) => {
         setUserData(res.data);
         toast.success("Perfil criado com succeso!");
-        setTimeout(() => {
-          setModalOpen(<LoginForm />);
-        }, 3000);
+        // setModalOpen(null);
+        // setTimeout(() => {
+        //   setModalOpen(<LoginForm />);
+        // }, 1000);
       })
       .catch((err) => console.error(err));
   };
@@ -115,7 +116,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
 
   const logoutUser = () => {
     setUserData({} as IUser);
-    localStorage.removeItem("@TOKEN");
+    localStorage.clear();
     navigate("/");
   };
 
@@ -160,8 +161,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         getUserProfile,
         sendEmail,
         resetPassword,
-      }}
-    >
+      }}>
       {children}
     </UserContext.Provider>
   );

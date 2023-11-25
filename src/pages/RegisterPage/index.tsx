@@ -7,6 +7,7 @@ import { IRegisterUser } from "../../providers/user/interface";
 import { Input } from "../../components/Input";
 import { ModalContext } from "../../providers/modal";
 import { DivInput, DivInputRadio, ErrorMessage, FormStyled } from "./style";
+import { LoginForm } from "../LoginModal/loginForm";
 
 export const RegisterForm = () => {
   const { createUser } = useContext(UserContext);
@@ -22,7 +23,7 @@ export const RegisterForm = () => {
 
   const submit: SubmitHandler<IRegisterUser> = (data) => {
     createUser(data);
-    setModalOpen(null)    
+    setModalOpen(<LoginForm />);
   };
 
   return (
@@ -52,11 +53,7 @@ export const RegisterForm = () => {
             <span>Recrutador</span>
           </label>
           <label>
-            <input
-              type="radio"
-              value="CANDIDATE"
-              {...register("role")}
-            />
+            <input type="radio" value="CANDIDATE" {...register("role")} />
             <span>Candidato</span>
           </label>
         </DivInputRadio>
