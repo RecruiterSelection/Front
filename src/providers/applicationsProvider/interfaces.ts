@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 export interface IApplicationContext {
-  applicationsData: never[];
+  applicationsData: GetManyApplicationsResponse;
 
   getAllApplications: () => Promise<GetManyApplicationsResponse | undefined>;
 }
@@ -29,6 +29,9 @@ interface JobListing {
   updated_at: string;
   requirements: string;
   location: string;
+  responsibilities: string;
+  benefits: string;
+  jobType: "FREELANCE" | "FULL_TIME" | "PART_TIME";
 }
 
 type ApplicationStatus =

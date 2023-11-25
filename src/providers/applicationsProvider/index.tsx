@@ -8,8 +8,9 @@ import { api } from "../../services/api";
 
 export const ApplicationsContext = createContext({} as IApplicationContext);
 
-export const ModalProvider = ({ children }: IDefaultProviderProps) => {
-  const [applicationsData, setApplicationsData] = useState([]);
+export const ApplicationsProvider = ({ children }: IDefaultProviderProps) => {
+  const [applicationsData, setApplicationsData] =
+    useState<GetManyApplicationsResponse>([]);
 
   const getAllApplications = async (): Promise<
     GetManyApplicationsResponse | undefined
@@ -19,6 +20,7 @@ export const ModalProvider = ({ children }: IDefaultProviderProps) => {
         "/applications"
       );
       console.log(response.data, "getAllApplications");
+      setApplicationsData(response.data);
       return response.data;
     } catch (error) {
       console.log(error);

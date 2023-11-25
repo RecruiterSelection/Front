@@ -68,7 +68,6 @@ export const StyledUserDataContainer = styled.div`
     }
 
     @media (max-width: ${phoneBreakPoint}) {
-      align-self: center;
     }
   }
 
@@ -91,24 +90,5 @@ export const StyledUserDataContainer = styled.div`
   #icon_other_infos_div > svg:hover {
     cursor: pointer;
     color: var(--random--random-1);
-  }
-
-  .info-enter {
-    max-height: 0;
-    opacity: 0;
-    transition: opacity 500ms, max-height 500ms;
-  }
-  .info-enter-active {
-    opacity: 1;
-    max-height: 1000px;
-  }
-  .info-exit {
-    opacity: 1;
-    max-height: 1000px;
-  }
-  .info-exit-active {
-    opacity: 0;
-    max-height: 0;
-    transition: opacity 500ms, max-height 500ms;
   }
 `;

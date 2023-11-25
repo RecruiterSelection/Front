@@ -12,7 +12,7 @@ import { UserContext } from "../../providers/user/userProvider";
 import { useNavigate } from "react-router";
 import { FaEdit } from "react-icons/fa";
 import { EditCandidateInfoModal } from "../../components/editCandidateInfoModal";
-import { ApplicationsComponent } from "../../components/applications";
+import { ApplicationsComponent } from "../../components/applicationsComponent";
 
 export const DashBoardPage = () => {
   const { candidateWithEmail, getCandidateByEmail } =
@@ -73,6 +73,10 @@ export const DashBoardPage = () => {
                 <h1>Referências</h1>
                 <p>{candidateWithEmail?.references}</p>
               </div>
+              <div className="phone_div">
+                <h1>Telefone</h1>
+                <p>{candidateWithEmail?.contactNumber}</p>
+              </div>
             </div>
             <div
               id="icon_other_infos_div"
@@ -102,18 +106,3 @@ export const DashBoardPage = () => {
     </>
   );
 };
-
-{
-  /* <button onClick={() => setShowCandidateInfo(!showCandidateInfo)}>
-            {showCandidateInfo ? "Ocultar Informações" : "Mostrar Informações"}
-          </button> */
-}
-{
-  /* <CSSTransition
-            in={showCandidateInfo}
-            timeout={250}
-            classNames="info"
-            unmountOnExit>
-            <p></p>
-          </CSSTransition> */
-}

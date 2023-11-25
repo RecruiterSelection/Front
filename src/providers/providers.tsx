@@ -4,6 +4,7 @@ import { TechSkillsProvider } from "./techSkillsProvider";
 import { CandidateProvider } from "./user/perfilCandidato/candidatesProvider";
 import React from "react";
 import { UserProvider } from "./user/userProvider";
+import { ApplicationsProvider } from "./applicationsProvider";
 
 export const ProvidersComponent: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -14,7 +15,9 @@ export const ProvidersComponent: React.FC<{ children: React.ReactNode }> = ({
         <CandidateTechSkillsProvider>
           <TechSkillsProvider>
             <CandidateProvider>
-              <VacancieProvider>{children}</VacancieProvider>
+              <ApplicationsProvider>
+                <VacancieProvider>{children}</VacancieProvider>
+              </ApplicationsProvider>
             </CandidateProvider>
           </TechSkillsProvider>
         </CandidateTechSkillsProvider>

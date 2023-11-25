@@ -39,7 +39,6 @@ export const StyledSkillsModalContainer = styled.div`
 
     @media (max-width: ${phoneBreakPoint}) {
       min-width: 250px;
-      /* background-color: aqua; */
     }
 
     li {
