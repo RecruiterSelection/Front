@@ -5,9 +5,11 @@ export interface IDefaultCandidateTechSkillsProps {
 export interface ICandidateTechSkillContext {
   getCandidateTechSkills: () => Promise<TCandidateSkillsResponse | undefined>;
   candidateTechSkills: TCandidateSkillsResponse;
-  createNewCandidateTechSkill: () => Promise<
-    INewCandidateTechSkill | undefined
-  >;
+  createNewCandidateTechSkill: (
+    candidateId: string,
+    skillId: string
+  ) => Promise<INewCandidateTechSkill | undefined>;
+  removeCandidateTechSkill: (techSkillId: string) => Promise<void>;
 }
 
 interface Candidate {
