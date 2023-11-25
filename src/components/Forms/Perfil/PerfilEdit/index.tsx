@@ -1,7 +1,6 @@
 import { PerfilStyled } from "./style";
 import { FaPencil } from "react-icons/fa6";
 import { CgAdd } from "react-icons/cg";
-import { Select } from "../../../select";
 
 export const PerfilStyleEdit = () => {
   return (
@@ -29,13 +28,6 @@ export const PerfilStyleEdit = () => {
             <span>71 9 9130-1551</span>
             <button type="button">{<FaPencil size="16" />}</button>
           </div>
-        </div>
-
-        <div className="flexRow">
-          <Select
-            label="Habilidades"
-            listOption={["Opção 1", "Opção 2", "Opção 3", "Opção 4"]}
-          />
         </div>
 
         <div>

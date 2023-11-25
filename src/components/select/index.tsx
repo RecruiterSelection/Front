@@ -8,7 +8,7 @@ export interface ISelect {
   listOption: any[]; // Certifique-se de ajustar o tipo conforme necessário
 }
 
-export const Select = ({ label, register, listOption }: ISelect) => {
+const Select = ({ label, register, listOption }: ISelect) => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
     register.defaultValue || ""
   );
