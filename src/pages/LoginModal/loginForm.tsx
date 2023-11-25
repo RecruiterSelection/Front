@@ -10,7 +10,7 @@ import { RegisterForm } from "../RegisterPage";
 import { ModalContext } from "../../providers/modal";
 import { SendEmailForm } from "../../components/Forms/SendEmail";
 
-export const LoginForm = () => {
+export const LoginForm: React.FC = () => {
   const { loginUser } = useContext(UserContext);
   const { setModalOpen } = useContext(ModalContext);
 
@@ -46,13 +46,14 @@ export const LoginForm = () => {
       {errors.password && (
         <ErrorMessage>{errors.password.message}</ErrorMessage>
       )}
-      <ButtonStyled onClick={() => setModalOpen(<SendEmailForm />)}>Esqueci minha senha</ButtonStyled>
+      <ButtonStyled onClick={() => setModalOpen(<SendEmailForm />)}>
+        Esqueci minha senha
+      </ButtonStyled>
       <ButtonStyled type="submit">Entrar</ButtonStyled>
       <p>Ainda não possui conta?</p>
       <ButtonStyled
         type="button"
-        onClick={() => setModalOpen(<RegisterForm />)}
-      >
+        onClick={() => setModalOpen(<RegisterForm />)}>
         Cadastrar
       </ButtonStyled>
     </FormStyled>

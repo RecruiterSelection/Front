@@ -31,9 +31,10 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       .then((res) => {
         setUserData(res.data);
         toast.success("Perfil criado com succeso!");
-        setTimeout(() => {
-          setModalOpen(<LoginForm />);
-        }, 3000);
+        // setModalOpen(null);
+        // setTimeout(() => {
+        //   setModalOpen(<LoginForm />);
+        // }, 1000);
       })
       .catch((err) => console.error(err));
   };
