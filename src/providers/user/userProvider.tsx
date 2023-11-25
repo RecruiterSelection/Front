@@ -15,7 +15,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { ModalContext } from "../modal";
 import { LoginForm } from "../../pages/LoginModal/loginForm";
-import React from "react";
 
 export const UserContext = createContext({} as IUserContext);
 
@@ -161,7 +160,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         getUserProfile,
         sendEmail,
         resetPassword,
-      }}>
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
