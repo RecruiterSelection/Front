@@ -4,13 +4,14 @@ import { useContext, useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import avatar from "../../assets/avator-img.jpg";
 import { TechSkillsContext } from "../../providers/techSkillsProvider";
-import React from "react";
 import { CandidateTechSkillsContext } from "../../providers/candidateTechSkillProvider";
 import { CandidateContext } from "../../providers/user/perfilCandidato/candidatesProvider";
 import { ModalContext } from "../../providers/modal";
 import { SkillsModal } from "../../components/SkillsModal";
 import { UserContext } from "../../providers/user/userProvider";
 import { useNavigate } from "react-router";
+import { FaEdit } from "react-icons/fa";
+import { EditCandidateInfoModal } from "../../components/editCandidateInfoModal";
 
 export const DashBoardPage = () => {
   const { candidateWithEmail, getCandidateByEmail } =
@@ -34,7 +35,7 @@ export const DashBoardPage = () => {
       getCandidateByEmail(userMail);
     }
     console.log(userMail);
-    // getTechSkills();
+
     getCandidateTechSkills();
   }, [userMail, userData]);
 
@@ -53,7 +54,34 @@ export const DashBoardPage = () => {
               <img src={avatar} alt="user avatar" />
             </div>
           </div>
-          {/* <div>{candidateWithEmail.}</div> */}
+
+          <div className="other_infos_div">
+            <div id="first_inside_other_infos_div">
+              <div className="address_div">
+                <h1>Endereço</h1>
+                <p>{candidateWithEmail?.address}</p>
+              </div>
+              <div className="education_div">
+                <h1>Educação</h1>
+                <p>{candidateWithEmail?.education}</p>
+              </div>
+              <div className="experience_div">
+                <h1>Experiência</h1>
+                <p>{candidateWithEmail?.experience}</p>
+              </div>
+            </div>
+            <div
+              id="icon_other_infos_div"
+              onClick={() =>
+                setModalOpen(
+                  <EditCandidateInfoModal
+                    candidateWithEmail={candidateWithEmail}
+                  />
+                )
+              }>
+              {<FaEdit size="24px" />}
+            </div>
+          </div>
           <div className="skills_div">
             <button
               onClick={() => {
@@ -62,15 +90,7 @@ export const DashBoardPage = () => {
               Minhas Habilidades
             </button>
           </div>
-          <div className="address_div">
-            <h1>Endereço</h1>
-          </div>
-          <div className="education_div">
-            <h1>Educação</h1>
-          </div>
-          <div className="experience_div">
-            <h1>Experiência</h1>
-          </div>
+
           {/* <button onClick={() => setShowCandidateInfo(!showCandidateInfo)}>
             {showCandidateInfo ? "Ocultar Informações" : "Mostrar Informações"}
           </button> */}

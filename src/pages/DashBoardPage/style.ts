@@ -28,6 +28,14 @@ export const StyledUserDataContainer = styled.div`
   flex-direction: column;
   gap: 10px;
 
+  #candidate_info_div,
+  .other_infos_div,
+  .skills_div {
+    border: var(--grey--scale--grey-7) solid 1px;
+    padding: 15px 20px;
+    border-radius: 12px;
+  }
+
   #candidate_info_div {
     display: flex;
     flex-direction: row;
@@ -64,6 +72,27 @@ export const StyledUserDataContainer = styled.div`
     @media (max-width: ${phoneBreakPoint}) {
       align-self: center;
     }
+  }
+
+  .other_infos_div {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #first_inside_other_infos_div > div {
+    padding: 10px;
+  }
+
+  #icon_other_infos_div > svg {
+    padding: 10px;
+  }
+
+  #icon_other_infos_div > svg:hover {
+    cursor: pointer;
+    color: var(--random--random-1);
   }
 
   .info-enter {

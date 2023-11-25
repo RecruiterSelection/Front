@@ -20,6 +20,10 @@ export const StyledSkillsModalContainer = styled.div`
 
     max-height: 30vh;
     width: auto;
+
+    border: var(--grey--scale--grey-7) solid 1px;
+    padding: 15px 20px;
+    border-radius: 12px;
   }
 
   .candidates_skill_ul,

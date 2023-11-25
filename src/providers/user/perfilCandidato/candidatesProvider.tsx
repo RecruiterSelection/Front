@@ -7,10 +7,9 @@ import {
   IPerfilCandidate,
   IPerfilCandidateWithEmail,
   IPerfilContext,
-  IRegisterPerfilCandidate,
+  IUpdatePerfilCandidate,
   TUpdatePerfilCandidate,
 } from "./interface";
-import React from "react";
 
 export const CandidateContext = createContext({} as IPerfilContext);
 
@@ -65,18 +64,20 @@ export const CandidateProvider = ({ children }: IDefaultProviderProps) => {
   const updateCandidateProfile = async (
     data: TUpdatePerfilCandidate,
     id: number
-  ) => {
-    await api
-      .patch(`/candidates/${id}`, data, {
+  ): Promise<IUpdatePerfilCandidate | undefined> => {
+    try {
+      const response = await api.patch(`/candidates/${id}`, data, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
         },
-      })
-      .then((res) => {
-        setProfile(res.data);
-        toast.success("Perfil editado com succeso!");
-      })
-      .catch((err) => toast.error(err));
+      });
+      setProfile(response.data);
+      toast.success("Perfil editado com succeso.");
+      console.log(response.data, "updateCandidateProfile");
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -87,8 +88,7 @@ export const CandidateProvider = ({ children }: IDefaultProviderProps) => {
         updateCandidateProfile,
         candidateWithEmail,
         getCandidateByEmail,
-      }}
-    >
+      }}>
       {children}
     </CandidateContext.Provider>
   );

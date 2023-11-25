@@ -44,7 +44,8 @@ export interface IPerfilContext {
   updateCandidateProfile: (
     data: TUpdatePerfilCandidate,
     id: number
-  ) => Promise<void>;
+  ) => Promise<IUpdatePerfilCandidate | undefined>;
+
   candidateWithEmail: IPerfilCandidateWithEmail | undefined;
   getCandidateByEmail: (
     email: string
@@ -53,4 +54,9 @@ export interface IPerfilContext {
 
 export interface IDefaultProviderProps {
   children: React.ReactNode;
+}
+
+export interface IUpdatePerfilCandidate extends IPerfilCandidate {
+  skills: string[];
+  firstAccess: boolean;
 }

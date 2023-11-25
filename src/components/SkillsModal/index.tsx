@@ -71,6 +71,7 @@ export const SkillsModal: React.FC = () => {
         <ul className="tech_skills_ul">
           {techSkills.map((skill) => (
             <li
+              key={skill.skillId}
               id={skill.skillId.toString()}
               onClick={(event) => handleClick(event)}>
               {skill.name}
