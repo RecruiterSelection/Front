@@ -9,6 +9,8 @@ import { CandidateTechSkillsContext } from "../../providers/candidateTechSkillPr
 import { CandidateContext } from "../../providers/user/perfilCandidato/candidatesProvider";
 import { ModalContext } from "../../providers/modal";
 import { SkillsModal } from "../../components/SkillsModal";
+import { UserContext } from "../../providers/user/userProvider";
+import { useNavigate } from "react-router";
 
 export const DashBoardPage = () => {
   const { candidateWithEmail, getCandidateByEmail } =
@@ -16,11 +18,16 @@ export const DashBoardPage = () => {
   // const { techSkills, getTechSkills } = useContext(TechSkillsContext);
   const { getCandidateTechSkills } = useContext(CandidateTechSkillsContext);
   const { setModalOpen } = useContext(ModalContext);
+  const { getUserProfile, userData } = useContext(UserContext);
 
   const [showCandidateInfo, setShowCandidateInfo] = useState(false);
   const userMail = localStorage.getItem("@userMail");
 
-  // const handleClick = () => {};
+  const navigate = useNavigate();
+
+  if (userData?.firstAccess) {
+    navigate("/perfil");
+  }
 
   useEffect(() => {
     if (userMail) {

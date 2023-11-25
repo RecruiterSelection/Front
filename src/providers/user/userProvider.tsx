@@ -116,7 +116,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
 
   const logoutUser = () => {
     setUserData({} as IUser);
-    localStorage.removeItem("@TOKEN");
+    localStorage.clear();
     navigate("/");
   };
 
@@ -161,8 +161,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         getUserProfile,
         sendEmail,
         resetPassword,
-      }}
-    >
+      }}>
       {children}
     </UserContext.Provider>
   );
