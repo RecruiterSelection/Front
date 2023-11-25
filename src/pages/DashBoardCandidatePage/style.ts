@@ -53,6 +53,9 @@ export const StyledUserDataContainer = styled.div`
   }
 
   .skills_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     button {
       color: var(--white-fixed);
       font-size: var(--text--body0);

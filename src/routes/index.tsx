@@ -9,7 +9,7 @@ import { ModalContext } from "../providers/modal";
 import { ProtectedRoute } from "./protectRoutes";
 import { ProtectedLayout } from "./protectedLayout";
 import { ContactPage } from "../pages/Contact";
-import { DashBoardPage } from "../pages/DashBoardPage";
+import { DashBoarCandidatedPage } from "../pages/DashBoardCandidatePage";
 import { ResetPasswordPage } from "../pages/ResetPassword";
 import React from "react";
 
@@ -26,7 +26,7 @@ export const RoutesMain = () => {
         <Route path="/vacancies" element={<VacanciesPage />} />
         <Route element={<ProtectedRoute />}>
           <Route element={<ProtectedLayout />}>
-            <Route path="/dashBoard" element={<DashBoardPage />} />
+            <Route path="/dashBoard" element={<DashBoarCandidatedPage />} />
             <Route path="/perfil" element={<PerfilPage />} />
           </Route>
         </Route>

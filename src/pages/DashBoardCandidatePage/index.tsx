@@ -1,6 +1,6 @@
 import { FooterComponent } from "../../components/Footer";
 import { StyledDashboardContainer, StyledUserDataContainer } from "./style";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import avatar from "../../assets/avator-img.jpg";
 import { TechSkillsContext } from "../../providers/techSkillsProvider";
@@ -14,7 +14,7 @@ import { FaEdit } from "react-icons/fa";
 import { EditCandidateInfoModal } from "../../components/editCandidateInfoModal";
 import { ApplicationsComponent } from "../../components/applicationsComponent";
 
-export const DashBoardPage = () => {
+export const DashBoarCandidatedPage = () => {
   const { candidateWithEmail, getCandidateByEmail } =
     useContext(CandidateContext);
   // const { techSkills, getTechSkills } = useContext(TechSkillsContext);
@@ -97,6 +97,7 @@ export const DashBoardPage = () => {
               }}>
               Minhas Habilidades
             </button>
+            <button onClick={() => navigate("/vacancies")}>Ver vagas</button>
           </div>
         </StyledUserDataContainer>
         <ApplicationsComponent />
