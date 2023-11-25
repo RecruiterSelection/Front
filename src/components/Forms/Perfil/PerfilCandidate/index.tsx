@@ -2,16 +2,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Input } from "../../../Input";
-import { Select } from "../../../select";
 import { useContext, useEffect } from "react";
 import { TechSkillsContext } from "../../../../providers/techSkillsProvider";
 import { UserContext } from "../../../../providers/user/userProvider";
 import { CandidateContext } from "../../../../providers/user/perfilCandidato/candidatesProvider";
-import { IRegisterPerfilCandidate } from "../../../../providers/user/perfilCandidato/interface";
 
 export const FormPerfilCandidate = () => {
   const { getTechSkills, techSkills } = useContext(TechSkillsContext);
-  const { userData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
   const { createPerfilCandidate } = useContext(CandidateContext);
 
   useEffect(() => {
@@ -39,6 +37,9 @@ export const FormPerfilCandidate = () => {
 
   const creatNewProfile = (perfilData) => {
     console.log(perfilData);
+    if (userData) {
+      setUserData({ ...userData, firstAccess: false });
+    }
     createPerfilCandidate(perfilData, Number(userData!.id));
   };
 

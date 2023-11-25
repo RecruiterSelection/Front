@@ -76,6 +76,10 @@ export const StyledAllSkillsContainer = styled.div`
     list-style: none;
     max-height: 30vh;
     justify-content: space-between;
+
+    @media (max-width: ${phoneBreakPoint}) {
+      justify-content: flex-start;
+    }
   }
 
   .tech_skills_ul > li {
