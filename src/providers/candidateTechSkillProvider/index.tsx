@@ -35,10 +35,34 @@ export const CandidateTechSkillsProvider = ({
     }
   };
 
-  const createNewCandidateTechSkill = async (): Promise<
-    INewCandidateTechSkill | undefined
-  > => {
-    return Response.data;
+  const createNewCandidateTechSkill = async (
+    candidateId: string,
+    skillId: string
+  ): Promise<INewCandidateTechSkill | undefined> => {
+    try {
+      const response = await api.post(
+        `candidates-tech-skills/${candidateId}/${skillId}`
+      );
+      console.log(response.data, "Respostaaaaaaaaaaaaaa");
+      setCandidateTechSkills((prevSkills) => [...prevSkills, response.data]);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeCandidateTechSkill = async (techSkillId: string) => {
+    try {
+      const response = await api.delete(
+        `/candidates-tech-skills/${techSkillId}`
+      );
+      console.log(response.data, "removeCandidateTechSkill");
+      setCandidateTechSkills(
+        candidateTechSkills.filter((skill) => skill.id !== +techSkillId)
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -47,6 +71,7 @@ export const CandidateTechSkillsProvider = ({
         getCandidateTechSkills,
         candidateTechSkills,
         createNewCandidateTechSkill,
+        removeCandidateTechSkill,
       }}>
       {children}
     </CandidateTechSkillsContext.Provider>
