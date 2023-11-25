@@ -2,8 +2,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Input } from "../../../Input";
+import { useContext } from "react";
+import { RecruiterContext } from "../../../../providers/user/perfilRecruiter/userProvider";
+import { UserContext } from "../../../../providers/user/userProvider";
+import { IRegisterPerfilRecruiter } from "../../../../providers/user/perfilRecruiter/interface";
 
 export const FormPerfilRecruiter = () => {
+  const { createPerfilRecruiter } = useContext(RecruiterContext);
+  const { userData } = useContext(UserContext);
+
   const schema = z.object({
     firstName: z.string().min(1, { message: "Obrigatório" }),
     lastName: z.string().min(1, { message: "Obrigatório" }),
@@ -20,8 +27,12 @@ export const FormPerfilRecruiter = () => {
     resolver: zodResolver(schema),
   });
 
-  const creatNewProfile = (e) => {
-    console.log(e);
+  const creatNewProfile = (data) => {
+    console.log(data);
+    createPerfilRecruiter(
+      data as IRegisterPerfilRecruiter,
+      Number(userData!.id)
+    );
   };
 
   return (

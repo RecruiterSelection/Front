@@ -47,11 +47,6 @@ export const PerfilStyled = styled.form`
     padding: 10px;
   }
 
-  select {
-    border-radius: 6px;
-    padding: 2px;
-  }
-
   img {
     width: 150px;
     border-radius: 50%;

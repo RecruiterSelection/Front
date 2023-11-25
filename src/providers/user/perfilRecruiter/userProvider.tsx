@@ -5,12 +5,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { IDefaultProviderProps } from "../interface";
 import {
   IPerfilRecruiter,
-  IPerfilContext,
   IRegisterPerfilRecruiter,
   TUpdatePerfilRecruiter,
+  IPerfilRecruiterContext,
 } from "./interface";
 
-export const RecruiterContext = createContext({} as IPerfilContext);
+export const RecruiterContext = createContext({} as IPerfilRecruiterContext);
 
 export const RecruiterProvider = ({ children }: IDefaultProviderProps) => {
   const [profile, setProfile] = useState<IPerfilRecruiter>(
@@ -34,7 +34,7 @@ export const RecruiterProvider = ({ children }: IDefaultProviderProps) => {
 
   const getRecruiterProfile = async (id: number) => {
     await api
-      .get(`/recruiters${id}`, {
+      .get(`/recruiters/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
         },
@@ -68,7 +68,8 @@ export const RecruiterProvider = ({ children }: IDefaultProviderProps) => {
         createPerfilRecruiter,
         getRecruiterProfile,
         updateRecruiterProfile,
-      }}>
+      }}
+    >
       {children}
     </RecruiterContext.Provider>
   );
