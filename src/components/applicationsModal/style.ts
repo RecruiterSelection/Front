@@ -18,6 +18,7 @@ export const ApplicationModalContainer = styled.div`
 
   .modal_wrapper > header {
     padding: 15px 20px;
+    border-radius: 12px;
   }
 
   .application_content_wrapper {
@@ -101,6 +102,19 @@ export const ApplicationModalContainer = styled.div`
     display: block;
     height: 15px;
     border-radius: 50%;
+  }
+
+  .remove_button_div {
+    padding-top: 20px;
+
+    button {
+      color: var(--white-fixed);
+      font-size: var(--text--body0);
+      padding: 10px 30px;
+      background-color: var(--random--random-1);
+      border: none;
+      border-radius: 4px;
+    }
   }
 
   .application_status > span.APPLIED {

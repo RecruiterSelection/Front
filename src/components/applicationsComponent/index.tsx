@@ -5,7 +5,7 @@ import { StyledApplicationsContainer } from "./style";
 import { useContext, useEffect } from "react";
 
 export const ApplicationsComponent: React.FC = () => {
-  const { getAllApplications, applicationsData } =
+  const { getAllApplications, applicationsData, deleteApplication } =
     useContext(ApplicationsContext);
 
   const { setModalOpen } = useContext(ModalContext);
@@ -33,6 +33,7 @@ export const ApplicationsComponent: React.FC = () => {
                   applicationModalId={application.applicationId}
                   applicationsData={applicationsData}
                   getAllApplications={getAllApplications}
+                  deleteApplication={deleteApplication}
                 />
               )
             }>

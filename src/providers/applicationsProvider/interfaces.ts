@@ -4,6 +4,8 @@ export interface IApplicationContext {
   applicationsData: GetManyApplicationsResponse;
 
   getAllApplications: () => Promise<GetManyApplicationsResponse | undefined>;
+
+  deleteApplication: (applicationId: number) => Promise<void>;
 }
 
 export interface IDefaultProviderProps {

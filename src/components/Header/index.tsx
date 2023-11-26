@@ -35,10 +35,6 @@ export const HeaderComponents = () => {
       <NavStyled isVisible={menuIsVisible}>
         {isLoggedIn ? (
           <>
-            {/* <button>EDITAR PERFIL</button>
-            <button onClick={() => setModalOpen(<DeleteUserModal />)}>
-              DELETAR CONTA
-            </button> */}
             <button onClick={() => logoutUser()}>Sair</button>
           </>
         ) : (
