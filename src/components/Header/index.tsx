@@ -8,7 +8,6 @@ import { RiMenuFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../providers/user/userProvider";
 import { DeleteUserModal } from "../Modal/DeleteUser";
-import React from "react";
 
 export const HeaderComponents = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
@@ -36,10 +35,10 @@ export const HeaderComponents = () => {
       <NavStyled isVisible={menuIsVisible}>
         {isLoggedIn ? (
           <>
-            <button>EDITAR PERFIL</button>
+            {/* <button>EDITAR PERFIL</button>
             <button onClick={() => setModalOpen(<DeleteUserModal />)}>
               DELETAR CONTA
-            </button>
+            </button> */}
             <button onClick={() => logoutUser()}>Sair</button>
           </>
         ) : (

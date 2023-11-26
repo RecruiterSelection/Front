@@ -66,7 +66,7 @@ export const NavStyled = styled.nav<NavStyledProps>`
     cursor: pointer;
     transition: transform 0.3s;
 
-    &:nth-of-type(3) {
+    &:nth-of-type(1) {
       background-color: var(--brand--brand2);
       padding: 5px;
       border-radius: 5px;
@@ -88,7 +88,8 @@ export const NavStyled = styled.nav<NavStyledProps>`
     width: 40%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     position: static;
+    padding-right: 30px;
   }
 `;
