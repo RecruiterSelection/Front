@@ -36,7 +36,6 @@ export const FormPerfilCandidate = () => {
   });
 
   const creatNewProfile = (perfilData) => {
-    console.log(perfilData);
     if (userData) {
       setUserData({ ...userData, firstAccess: false });
     }

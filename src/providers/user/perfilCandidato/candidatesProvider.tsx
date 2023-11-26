@@ -10,10 +10,14 @@ import {
   IUpdatePerfilCandidate,
   TUpdatePerfilCandidate,
 } from "./interface";
+import { useNavigate } from "react-router-dom";
+
 
 export const CandidateContext = createContext({} as IPerfilContext);
 
 export const CandidateProvider = ({ children }: IDefaultProviderProps) => {
+  const navigate = useNavigate();
+
   const [profile, setProfile] = useState<IPerfilCandidate>(
     {} as IPerfilCandidate
   );
@@ -27,6 +31,7 @@ export const CandidateProvider = ({ children }: IDefaultProviderProps) => {
       .then((res) => {
         setProfile(res.data);
         toast.success("Perfil criado com succeso!");
+        navigate("/Dashboard");
       })
       .catch((err) => console.error(err));
   };

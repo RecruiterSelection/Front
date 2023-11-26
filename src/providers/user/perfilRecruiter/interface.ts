@@ -1,36 +1,33 @@
 import { DeepPartial } from "react-hook-form";
 
 export interface IPerfilRecruiter {
-  id: number;
+  recruiterId: number;
+  userId: number;
   firstName: string;
   lastName: string;
+  companyName: string;
   contactNumber: string;
   address: string;
-  education: string;
-  skills: string;
-  experience: string;
-  references: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface IRegisterPerfilRecruiter {
   firstName: string;
   lastName: string;
+  companyName: string;
   contactNumber: string;
   address: string;
-  education: string;
-  skills: string;
-  experience: string;
-  references: string;
 }
 
 export type TUpdatePerfilRecruiter = DeepPartial<IRegisterPerfilRecruiter>;
 
-export interface IPerfilContext {
+export interface IPerfilRecruiterContext {
   createPerfilRecruiter: (
     data: IRegisterPerfilRecruiter,
     id: number
-  ) => Promise<void>;
-  getRecruiterProfile: (id: number) => Promise<void>;
+  ) => Promise<IPerfilRecruiter>;
+  getRecruiterProfile: (id: number) => Promise<IPerfilRecruiter>;
   updateRecruiterProfile: (
     data: TUpdatePerfilRecruiter,
     id: number
