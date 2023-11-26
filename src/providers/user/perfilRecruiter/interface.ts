@@ -23,6 +23,7 @@ export interface IRegisterPerfilRecruiter {
 export type TUpdatePerfilRecruiter = DeepPartial<IRegisterPerfilRecruiter>;
 
 export interface IPerfilRecruiterContext {
+  profile: IPerfilRecruiter;
   createPerfilRecruiter: (
     data: IRegisterPerfilRecruiter,
     id: number

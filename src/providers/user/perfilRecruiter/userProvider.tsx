@@ -65,6 +65,7 @@ export const RecruiterProvider = ({ children }: IDefaultProviderProps) => {
   return (
     <RecruiterContext.Provider
       value={{
+        profile,
         createPerfilRecruiter,
         getRecruiterProfile,
         updateRecruiterProfile,

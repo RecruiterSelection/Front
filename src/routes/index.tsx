@@ -12,6 +12,7 @@ import { ContactPage } from "../pages/Contact";
 import { DashBoardPage } from "../pages/DashBoardPage";
 import { ResetPasswordPage } from "../pages/ResetPassword";
 import React from "react";
+import { VacanciesPageCreat } from "../pages/VacanciesCreat";
 
 export const RoutesMain = () => {
   const { modalOpen } = useContext(ModalContext);
@@ -28,6 +29,7 @@ export const RoutesMain = () => {
           <Route element={<ProtectedLayout />}>
             <Route path="/dashBoard" element={<DashBoardPage />} />
             <Route path="/perfil" element={<PerfilPage />} />
+            <Route path="/vacancies/creat" element={<VacanciesPageCreat />} />
           </Route>
         </Route>
         <Route path="/resetPassword/:token" element={<ResetPasswordPage />} />
