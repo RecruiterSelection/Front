@@ -20,6 +20,10 @@ export const StyledSkillsModalContainer = styled.div`
 
     max-height: 30vh;
     width: auto;
+
+    border: var(--grey--scale--grey-7) solid 1px;
+    padding: 15px 20px;
+    border-radius: 12px;
   }
 
   .candidates_skill_ul,
@@ -35,7 +39,6 @@ export const StyledSkillsModalContainer = styled.div`
 
     @media (max-width: ${phoneBreakPoint}) {
       min-width: 250px;
-      /* background-color: aqua; */
     }
 
     li {
@@ -71,6 +74,10 @@ export const StyledAllSkillsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  border: var(--grey--scale--grey-7) solid 1px;
+  padding: 15px 20px;
+  border-radius: 12px;
 
   .tech_skills_ul {
     list-style: none;
