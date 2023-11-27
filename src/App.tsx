@@ -2,11 +2,12 @@ import { ToastContainer } from "react-toastify";
 import { RoutesMain } from "./routes";
 import { GlobalStyle } from "./styles/globalStyles";
 import { ResetStyle } from "./styles/resetStyles";
-import { UserProvider } from "./providers/user/userProvider";
+import { ModalProvider } from "./providers/modal";
+import React from "react";
 
 export const App = () => {
   return (
-    <UserProvider>
+    <ModalProvider>
       <GlobalStyle />
       <ResetStyle />
       <RoutesMain />
@@ -23,6 +24,6 @@ export const App = () => {
         pauseOnHover
         theme="light"
       />
-    </UserProvider>
+    </ModalProvider>
   );
 };

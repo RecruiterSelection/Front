@@ -1,8 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import {
   IDefaultProviderProps,
   ILoginUser,
   IRegisterUser,
+  IResetPassword,
+  ISendEmail,
   IUser,
   IUserContext,
   TUpdateUser,
@@ -11,11 +13,14 @@ import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { ModalContext } from "../modal";
+import { LoginForm } from "../../pages/LoginModal/loginForm";
 
 export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IDefaultProviderProps) => {
-  const [user, setUser] = useState<IUser>({} as IUser);
+  const [userData, setUserData] = useState<IUser>({} as IUser);
+  const { setModalOpen } = useContext(ModalContext);
 
   const navigate = useNavigate();
 
@@ -23,8 +28,29 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     await api
       .post("/users", data)
       .then((res) => {
-        setUser(res.data);
+        setUserData(res.data);
         toast.success("Perfil criado com succeso!");
+        // setModalOpen(null);
+        // setTimeout(() => {
+        //   setModalOpen(<LoginForm />);
+        // }, 1000);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const getUserProfile = async (id: number) => {
+    const userId = localStorage.getItem("@userId");
+
+    await api
+      .get(`/users/${Number(userId)}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
+        },
+      })
+      .then((res) => {
+        setUserData(res.data);
+        localStorage.setItem("@userMail", res.data.email);
+        console.log(res.data, "getUserProfile");
       })
       .catch((err) => console.error(err));
   };
@@ -37,20 +63,21 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         },
       })
       .then((res) => {
-        setUser(res.data);
+        setUserData(res.data);
       })
       .catch((err) => console.error(err));
   };
 
   const updateUser = async (data: TUpdateUser) => {
     await api
-      .patch(`/users/${user.id}`, data, {
+      .patch(`/users/${userData.id}`, data, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
         },
       })
       .then((res) => {
-        setUser(res.data);
+        console.log(res.data);
+        setUserData(res.data);
         getUser();
         toast.success("Perfil editado com succeso!");
       })
@@ -59,21 +86,27 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
 
   const deleteUser = async () => {
     await api
-      .delete(`/users/${user.id}`)
-      .then(() => toast.success("Perfil deletado com sucesso"))
+      .delete(`/users/${userData.id}`)
+      .then(() => {
+        toast.success("Perfil deletado com sucesso");
+        setModalOpen(null);
+        logoutUser();
+      })
       .catch((err) => console.error(err));
   };
 
   const loginUser = async (data: ILoginUser) => {
     await api
-      .post("", data)
+      .post("/auth/login", data)
       .then((res) => {
-        localStorage.setItem("@TOKEN", res.data.token);
-        getUser();
+        console.log(res.data);
+        localStorage.setItem("@TOKEN", res.data.accessToken);
+        localStorage.setItem("@userId", res.data.userId);
+
+        getUserProfile(res.data.userId);
+
+        navigate("/Dashboard");
         toast.success("Login realizado com sucesso!");
-        setTimeout(() => {
-          navigate("/DashBoard");
-        }, 3000);
       })
       .catch((err) => {
         toast.error("Email ou Senha incorreta");
@@ -82,23 +115,53 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   const logoutUser = () => {
-    setUser({} as IUser);
-    localStorage.removeItem("@TOKEN");
-    setTimeout(() => {
-      navigate("/");
-    }, 3000);
+    setUserData({} as IUser);
+    localStorage.clear();
+    navigate("/");
+  };
+
+  const sendEmail = (data: ISendEmail) => {
+    api
+      .post("/users/resetPassword", data)
+      .then(() => {
+        toast.success("E-mail enviado com sucesso !");
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Erro ao enviar o e-mail, tente novamente mais tarde");
+      });
+  };
+
+  const resetPassword = (data: IResetPassword, token: string) => {
+    api
+      .patch(`/users/resetPassword/${token}`, {
+        password: data.password,
+      })
+      .then(() => {
+        toast.success("Senha atualizada com sucesso !");
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Erro ao atualizar a senha");
+      });
   };
 
   return (
     <UserContext.Provider
       value={{
-        user,
+        userData,
         createUser,
         getUser,
         updateUser,
         deleteUser,
         loginUser,
         logoutUser,
+        getUserProfile,
+        sendEmail,
+        resetPassword,
+        setUserData,
       }}
     >
       {children}

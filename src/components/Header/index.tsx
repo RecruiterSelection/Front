@@ -1,23 +1,33 @@
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import { LoginModal } from "../Modais/login";
+import { LoginForm } from "../../pages/LoginModal/loginForm";
+import { ModalContext } from "../../providers/modal";
 import { HeaderContainerStyled, LogoLinkStyled, NavStyled } from "./style";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { RiMenuFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../providers/user/userProvider";
+import { DeleteUserModal } from "../Modal/DeleteUser";
 
 export const HeaderComponents = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
-  const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const { setModalOpen } = useContext(ModalContext);
+  const { logoutUser } = useContext(UserContext);
+
+  const token = localStorage.getItem("@TOKEN");
+  const isLoggedIn = !!token;
 
   const toggleMenu = () => {
     setMenuIsVisible(!menuIsVisible);
   };
+  const navigate = useNavigate();
 
-  const openLoginModal = () => {
-    setLoginModalOpen(true);
+  const navigateTo = (path: string) => {
+    navigate(path);
   };
 
-  const closeLoginModal = () => {
-    setLoginModalOpen(false);
+  const handleDelete = () => {
+    setModalOpen(<DeleteUserModal />);
   };
 
   return (
@@ -27,13 +37,20 @@ export const HeaderComponents = () => {
       </LogoLinkStyled>
       <RiMenuFill onClick={toggleMenu} className="mobile" />
       <NavStyled isVisible={menuIsVisible}>
-        <button>VAGAS</button>
-        <button>SOBRE NÓS</button>
-        <button>CONTATO</button>
-        <button onClick={openLoginModal}>ENTRAR</button>
+        {isLoggedIn ? (
+          <>
+            <button onClick={() => handleDelete()}>Deletar conta</button>
+            <button onClick={() => logoutUser()}>Sair</button>
+          </>
+        ) : (
+          <>
+            <button onClick={() => navigateTo("/vacancies")}>VAGAS</button>
+            <Link to={"/AboutUs"}>SOBRE NÓS</Link>
+            <button onClick={() => navigateTo("/contact")}>CONTATO</button>
+            <button onClick={() => setModalOpen(<LoginForm />)}>ENTRAR</button>
+          </>
+        )}
       </NavStyled>
-
-      <LoginModal open={loginModalOpen} onClose={closeLoginModal} />
     </HeaderContainerStyled>
   );
 };

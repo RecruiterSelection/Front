@@ -1,66 +1,48 @@
 import styled from "styled-components";
 
-export const PerfilStyled = styled.form`
+export const ContainerPerfilStyled = styled.main`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding-bottom: 50px;
-  position: relative;
-  gap: 50px;
+  justify-content: center;
 
-  div {
-  }
-
-  input {
-    border-radius: 6px;
-    border: none;
-    font-size: 16px;
-    padding: 5px 10px;
-  }
-
-  .flexRow {
-    display: flex;
-    gap: 20px;
-    flex-direction: row;
-  }
-
-  > div {
-    border: solid 1px;
-    border-radius: 6px;
-  }
-
-  div {
+  .formStyle {
+    padding: 20px 15px;
+    border-radius: 8px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    align-self: center;
+    justify-self: center;
+    background-color: white;
+    border: 1px solid;
 
-    width: 500px;
-    max-width: 90%;
+    h2 {
+      color: var(--brand--brand1);
+      text-align: center;
+      font-size: 22px;
+    }
 
-    padding: 10px;
-  }
+    fieldset {
+      box-sizing: border-box;
+    }
 
-  img {
-    background-color: blue;
-    width: 150px;
-    border-radius: 50%;
-  }
+    button {
+      align-self: center;
+      border: solid 1px transparent;
+      width: 95%;
+      opacity: 0.9;
+      border-radius: 8px;
+      margin: 15px 10px;
+      font-size: 18px;
+      padding: 15px;
+      background-color: var(--brand--brand1);
+      color: var(--brand--brand4);
+    }
 
-  button {
-    width: 25px;
-    height: 25px;
-
-    position: relative;
-    background: none;
-    color: white;
-
-    border: none;
-  }
-
-  button:hover {
-    opacity: 1;
+    button:hover {
+      border: solid 1px var(--brand--brand3);
+      opacity: 1;
+    }
   }
 `;

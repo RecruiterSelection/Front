@@ -1,10 +1,11 @@
 export interface IVacanciesContext {
-  vacancies: any;
-  SetVacancies: React.Dispatch<React.SetStateAction<any>>;
-  createVacancie: any;
-  getVacancie: any;
-  updateVacancie: any;
-  deleteVacancie: any;
+  createVacancie: (data: ICreateVacancie, id: number) => Promise<void>;
+  getAllVacancies: (
+    page: string,
+    limit: string
+  ) => Promise<IRequestAllVancancies | undefined>;
+  vacancies: IVacancie[];
+  totalPages: number | null | undefined;
 }
 
 export interface IProviderProps {
@@ -12,17 +13,31 @@ export interface IProviderProps {
 }
 
 export interface IVacancie {
-  jobId: string;
-  recruiter: number;
+  jobId: number;
   recruitersRecruiterId: number;
   title: string;
   description: string;
   requirements: string;
   responsibilities: string;
-  benefitis: string;
+  benefits: string;
   location: string;
-  jobType: string;
+  jobType: "FULL_TIME" | "PART_TIME" | "FREELANCE";
   created_at: string;
   updated_at: string;
-  Applications: string;
+}
+
+export interface ICreateVacancie {
+  title: string;
+  description: string;
+  requirements: string;
+  responsibilities: string;
+  benefits: string;
+  location: string;
+  jobType: "FULL_TIME" | "PART_TIME" | "FREELANCE";
+}
+
+export interface IRequestAllVancancies {
+  jobs: IVacancie[];
+  total: number;
+  totalPages: number | null;
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const VacanciesStyle = styled.main`
+export const VacanciesStyledContainer = styled.main`
   background-color: var(--brand--brand1);
   min-height: calc(100vh - 87px);
   padding: 10px;
@@ -13,6 +13,7 @@ export const VacanciesStyle = styled.main`
     opacity: 80%;
     display: flex;
     justify-content: center;
+    flex-direction: row;
 
     background-color: white;
     padding: 10px;
@@ -33,6 +34,7 @@ export const VacanciesStyle = styled.main`
       width: 100%;
       margin: 0 10px;
       padding: 10px;
+      max-width: inherit;
     }
 
     button {
@@ -43,16 +45,5 @@ export const VacanciesStyle = styled.main`
     button:hover {
       border: 2px solid;
     }
-  }
-
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-
-    margin-top: 60px;
-    max-width: 1000px;
-    gap: 20px;
   }
 `;
