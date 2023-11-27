@@ -162,7 +162,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         sendEmail,
         resetPassword,
         setUserData,
-      }}>
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

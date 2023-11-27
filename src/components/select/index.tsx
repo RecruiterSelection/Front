@@ -1,5 +1,5 @@
 import { UseFormRegisterReturn } from "react-hook-form";
-import { FieldStyled } from "./style";
+import { FieldStyled, SelectStyle } from "./style";
 import React, { useState } from "react";
 
 export interface ISelect {
@@ -8,7 +8,7 @@ export interface ISelect {
   listOption: any[]; // Certifique-se de ajustar o tipo conforme necessário
 }
 
-const Select = ({ label, register, listOption }: ISelect) => {
+export const Select = ({ label, register, listOption }: ISelect) => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
     register.defaultValue || ""
   );
@@ -21,7 +21,7 @@ const Select = ({ label, register, listOption }: ISelect) => {
   return (
     <>
       <label htmlFor={label}>{label}</label>
-      <select
+      <SelectStyle
         {...register}
         onChange={(e) => handleSelectChange(e)}
         value={selectedValue}
@@ -29,11 +29,11 @@ const Select = ({ label, register, listOption }: ISelect) => {
         name={label}
       >
         {listOption.map((option: any) => (
-          <option key={option.name} value={option.name}>
-            {option.name}
+          <option key={option} value={option}>
+            {option}
           </option>
         ))}
-      </select>
+      </SelectStyle>
     </>
   );
 };
