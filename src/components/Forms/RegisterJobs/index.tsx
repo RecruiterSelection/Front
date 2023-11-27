@@ -9,8 +9,11 @@ import { RecruiterContext } from "../../../providers/user/perfilRecruiter/userPr
 import { VacancieContext } from "../../../providers/VacancieContext";
 import { ICreateVacancie } from "../../../providers/VacancieContext/types";
 import { Select } from "../../select";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterJob = () => {
+  const navigate = useNavigate();
+
   const { userData } = useContext(UserContext);
   const { getRecruiterProfileAll } = useContext(RecruiterContext);
   const { createVacancie } = useContext(VacancieContext);
@@ -51,12 +54,15 @@ export const RegisterJob = () => {
     });
 
     createVacancie(data, profile[0].recruiterId);
+
+    navigate("/dashboard");
   };
 
   return (
     <>
       <FormStyle onSubmit={handleSubmit(creatNewProfile)}>
         <h2>Criar Vaga</h2>
+
         <Input
           register={register("title")}
           placeholder="Titulo"
@@ -119,8 +125,6 @@ export const RegisterJob = () => {
           key="Tipo de trabalho"
           label="Tipo de trabalho"
         /> */}
-
-        {errors.jobType?.message && <span>{errors.jobType?.message}</span>}
 
         <button type="submit">Cadastrar</button>
       </FormStyle>
