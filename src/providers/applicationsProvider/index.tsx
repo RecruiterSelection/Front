@@ -1,5 +1,7 @@
 import { createContext, useState } from "react";
 import {
+  ApplicationData,
+  CreateNewApplication,
   GetManyApplicationsResponse,
   IApplicationContext,
   IDefaultProviderProps,
@@ -28,6 +30,31 @@ export const ApplicationsProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
 
+  const createNewApplication = async (
+    data: ApplicationData,
+    candidateId: number,
+    jobId: number
+  ): Promise<CreateNewApplication | undefined> => {
+    try {
+      const response = await api.post(
+        `/applications/${candidateId}/${jobId}`,
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
+          },
+        }
+      );
+
+      getAllApplications();
+      console.log(response.data, "createNewApplication");
+      toast.success("Candidatura realizada com sucesso!");
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const deleteApplication = async (applicationId: number): Promise<void> => {
     try {
       await api.delete(`/applications/${applicationId}`);
@@ -40,7 +67,12 @@ export const ApplicationsProvider = ({ children }: IDefaultProviderProps) => {
 
   return (
     <ApplicationsContext.Provider
-      value={{ getAllApplications, applicationsData, deleteApplication }}>
+      value={{
+        getAllApplications,
+        applicationsData,
+        deleteApplication,
+        createNewApplication,
+      }}>
       {children}
     </ApplicationsContext.Provider>
   );
