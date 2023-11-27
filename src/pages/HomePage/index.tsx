@@ -10,7 +10,6 @@ import { ModalContext } from "../../providers/modal";
 import { useContext } from "react";
 import { LoginForm } from "../LoginModal/loginForm";
 import { FooterComponent } from "../../components/Footer";
-import React from "react";
 
 export const HomePage = () => {
   const { setModalOpen } = useContext(ModalContext);

@@ -2,6 +2,8 @@ import { useContext, useEffect } from "react";
 import { StyledVacanciesContainer, StyledVacancyBox } from "./style";
 import { IVacanciesContext } from "../../providers/VacancieContext/types";
 import { VacancieContext } from "../../providers/VacancieContext";
+import { LoginForm } from "../../pages/LoginModal/loginForm";
+import { ModalContext } from "../../providers/modal";
 
 interface IsearchTerm {
   searchTerm: string;
@@ -12,8 +14,13 @@ export const VacanciesComponent = (props: IsearchTerm) => {
   const { getAllVacancies, vacancies, totalPages } =
     useContext<IVacanciesContext>(VacancieContext);
 
+  const { setModalOpen } = useContext(ModalContext);
+
+  const token = localStorage.getItem("@TOKEN");
+  const isLoggedIn = !!token;
+
   useEffect(() => {
-    getAllVacancies("1", totalPages?.toString());
+    getAllVacancies("1", "100");
   }, [searchTerm, getAllVacancies]);
 
   const formatJobType = (jobType: string) => {
@@ -29,6 +36,8 @@ export const VacanciesComponent = (props: IsearchTerm) => {
     }
     return text;
   };
+
+  const handleClickLoggedIn = () => {};
 
   return (
     <>
@@ -65,7 +74,16 @@ export const VacanciesComponent = (props: IsearchTerm) => {
                   <p>{formatText(vacancy.responsibilities, 100)}</p>
                 </div>
                 <div className="button_wrapper">
-                  <button className="vacancy_button"> Ver mais </button>
+                  {isLoggedIn ? (
+                    <button className="vacancy_button"> Candidatar-se </button>
+                  ) : (
+                    <button
+                      className="vacancy_button"
+                      onClick={() => setModalOpen(<LoginForm />)}>
+                      {" "}
+                      Ver mais{" "}
+                    </button>
+                  )}
                 </div>
               </StyledVacancyBox>
             ))}

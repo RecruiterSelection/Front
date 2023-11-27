@@ -21,7 +21,7 @@ export const StyledVacancyBox = styled.li`
   background-color: var(--white-fixed);
   color: black;
 
-  width: 400px;
+  width: 100%;
   max-height: 500px;
 
   display: flex;
