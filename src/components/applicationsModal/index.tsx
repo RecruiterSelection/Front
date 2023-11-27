@@ -1,46 +1,89 @@
 import { GetManyApplicationsResponse } from "../../providers/applicationsProvider/interfaces";
 import { ModalContext } from "../../providers/modal";
+import { DeleteApplicationModal } from "./deleteApplicationModal";
 import { ApplicationModalContainer } from "./style";
 import { useContext, useEffect, useState } from "react";
 import { FaArrowDown } from "react-icons/fa";
 import { CSSTransition } from "react-transition-group";
 
-type ApplicationModalProps = {
+export type ApplicationModalProps = {
   applicationsData: GetManyApplicationsResponse;
   applicationModalId: number;
   getAllApplications: () => Promise<GetManyApplicationsResponse | undefined>;
+  deleteApplication: (applicationId: number) => Promise<void>;
+};
+
+const jobTypeMapping = {
+  PART_TIME: "Meio Período",
+  FULL_TIME: "Período Integral",
+  FREELANCE: "Freelance",
+};
+
+type ApplicationStatus =
+  | "APPLIED"
+  | "REVIEWED"
+  | "INTERVIEWED"
+  | "HIRED"
+  | "REJECTED";
+
+const getBorderStyle = (status: ApplicationStatus): React.CSSProperties => {
+  const statusColorMapping: Record<ApplicationStatus, string> = {
+    APPLIED: "blue",
+    REVIEWED: "orange",
+    INTERVIEWED: "purple",
+    HIRED: "green",
+    REJECTED: "red",
+  };
+  return {
+    border: `1px solid ${statusColorMapping[status]}`,
+  };
 };
 
 export const ApplicationModal: React.FC<ApplicationModalProps> = ({
   applicationModalId,
   applicationsData,
   getAllApplications,
+  deleteApplication,
 }) => {
   const [showJobInfo, setShowJobInfo] = useState(false);
   const [showApplicationInfo, setShowApplicationInfo] = useState(false);
+  const { setModalOpen } = useContext(ModalContext);
 
   useEffect(() => {
     console.log(applicationModalId);
     getAllApplications();
-  }, [applicationModalId]);
-
-  const { setModalOpen } = useContext(ModalContext);
+  }, [applicationModalId, getAllApplications]);
 
   const filteredApplication = applicationsData.filter(
     (application) => application.applicationId === applicationModalId
   );
 
-  const jobTypeMapping = {
-    PART_TIME: "Meio Período",
-    FULL_TIME: "Período Integral",
-    FREELANCE: "Freelance",
+  const openDeleteModal = () => {
+    setModalOpen(
+      <DeleteApplicationModal
+        returnToApplicationModal={returnToApplicationModal}
+        applicationModalId={applicationModalId}
+        deleteApplication={deleteApplication}
+      />
+    );
+  };
+
+  const returnToApplicationModal = () => {
+    setModalOpen(
+      <ApplicationModal
+        applicationModalId={applicationModalId}
+        applicationsData={applicationsData}
+        deleteApplication={deleteApplication}
+        getAllApplications={getAllApplications}
+      />
+    );
   };
 
   return (
     <ApplicationModalContainer>
       {filteredApplication.map((application) => (
         <div key={application.applicationId} className="modal_wrapper">
-          <header>
+          <header style={getBorderStyle(application.status)}>
             <h1>{application.jobListingJobId.title}</h1>
             <small>{application.jobListingJobId.location}</small>
             <span className="application_status">
@@ -107,6 +150,22 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                 </div>
               </div>
             </CSSTransition>
+          </div>
+          <div className="remove_button_div">
+            <button
+              disabled={
+                application.status === "REJECTED" ||
+                application.status === "HIRED"
+              }
+              onClick={() => {
+                openDeleteModal();
+              }}
+              id={application.applicationId.toString()}>
+              {application.status === "REJECTED" ||
+              application.status === "HIRED"
+                ? "Vaga finalizada"
+                : "Desistir"}
+            </button>
           </div>
         </div>
       ))}
