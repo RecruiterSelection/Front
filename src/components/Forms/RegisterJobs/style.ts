@@ -15,4 +15,8 @@ export const FormStyle = styled.form`
     width: 100%;
     padding: 10px;
   }
+
+  span {
+    color: red;
+  }
 `;

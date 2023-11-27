@@ -15,13 +15,10 @@ export const VacancieProvider = ({ children }: IProviderProps) => {
   const [vacancies, setVacancies] = useState<IVacancie[]>([]);
   const [totalPages, setTotalPages] = useState<number | null>(null);
 
-  const createVacancie = async (
-    data: ICreateVacancie,
-    id: number
-  ): Promise<IVacancie | undefined> => {
+  const createVacancie = async (data: ICreateVacancie, id: number) => {
     try {
-      const response = await api.post(`/jobs${id}`, data);
       toast("Vaga criada com sucesso.");
+      const response = await api.post(`/jobs/${id}`, data);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -69,6 +66,7 @@ export const VacancieProvider = ({ children }: IProviderProps) => {
   return (
     <VacancieContext.Provider
       value={{
+        createVacancie,
         getAllVacancies,
         vacancies,
         totalPages,

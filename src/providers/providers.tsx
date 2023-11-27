@@ -7,24 +7,23 @@ import { UserProvider } from "./user/userProvider";
 import { ApplicationsProvider } from "./applicationsProvider";
 import { RecruiterProvider } from "./user/perfilRecruiter/userProvider";
 
-
 export const ProvidersComponent: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   return (
     <>
       <UserProvider>
-        <CandidateTechSkillsProvider>
-          <TechSkillsProvider>
-            <CandidateProvider>
-              <ApplicationsProvider>
-                 <RecruiterProvider>
-                <VacancieProvider>{children}</VacancieProvider>
-                       </RecruiterProvider>
-              </ApplicationsProvider>
-            </CandidateProvider>
-          </TechSkillsProvider>
-        </CandidateTechSkillsProvider>
+        <RecruiterProvider>
+          <CandidateTechSkillsProvider>
+            <TechSkillsProvider>
+              <CandidateProvider>
+                <ApplicationsProvider>
+                  <VacancieProvider>{children}</VacancieProvider>
+                </ApplicationsProvider>
+              </CandidateProvider>
+            </TechSkillsProvider>
+          </CandidateTechSkillsProvider>
+        </RecruiterProvider>
       </UserProvider>
     </>
   );

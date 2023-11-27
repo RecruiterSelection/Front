@@ -24,6 +24,7 @@ export type TUpdatePerfilRecruiter = DeepPartial<IRegisterPerfilRecruiter>;
 
 export interface IPerfilRecruiterContext {
   profile: IPerfilRecruiter;
+  getRecruiterProfileAll: () => Promise<IPerfilRecruiter[]>;
   createPerfilRecruiter: (
     data: IRegisterPerfilRecruiter,
     id: number

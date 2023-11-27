@@ -1,4 +1,5 @@
 export interface IVacanciesContext {
+  createVacancie: (data: ICreateVacancie, id: number) => Promise<void>;
   getAllVacancies: (
     page: string,
     limit: string

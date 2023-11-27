@@ -20,7 +20,7 @@ export const DashBoarCandidatedPage = () => {
   // const { techSkills, getTechSkills } = useContext(TechSkillsContext);
   const { getCandidateTechSkills } = useContext(CandidateTechSkillsContext);
   const { setModalOpen } = useContext(ModalContext);
-  const { userData } = useContext(UserContext);
+  const { userData, getUserProfile } = useContext(UserContext);
 
   const userMail = localStorage.getItem("@userMail");
 
@@ -86,7 +86,8 @@ export const DashBoarCandidatedPage = () => {
                     candidateWithEmail={candidateWithEmail}
                   />
                 )
-              }>
+              }
+            >
               {<FaEdit size="24px" />}
             </div>
           </div>
@@ -94,7 +95,8 @@ export const DashBoarCandidatedPage = () => {
             <button
               onClick={() => {
                 setModalOpen(<SkillsModal />);
-              }}>
+              }}
+            >
               Minhas Habilidades
             </button>
             <button onClick={() => navigate("/vacancies")}>Ver vagas</button>

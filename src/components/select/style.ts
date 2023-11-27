@@ -1,7 +1,14 @@
 import { styled } from "styled-components";
 
-export const FieldStyled = styled.fieldset`
+export const SelectStyle = styled.select`
   display: flex;
-  gap: 20px;
-  border: none;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid var(--random--random-1);
+  border-radius: 4px;
+  transition: border-color 0.3s ease-in-out;
+  &:focus {
+    border-color: var(--brand--brand2);
+  }
 `;

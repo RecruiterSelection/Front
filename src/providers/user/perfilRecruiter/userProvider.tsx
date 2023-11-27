@@ -45,6 +45,23 @@ export const RecruiterProvider = ({ children }: IDefaultProviderProps) => {
       .catch((err) => console.error(err));
   };
 
+  const getRecruiterProfileAll = async () => {
+    let profileUser = "";
+
+    await api
+      .get(`/recruiters`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("@TOKEN")}`,
+        },
+      })
+      .then((res) => {
+        profileUser = res.data;
+      })
+      .catch((err) => console.error(err));
+
+    return profileUser;
+  };
+
   const updateRecruiterProfile = async (
     data: TUpdatePerfilRecruiter,
     id: number
@@ -66,6 +83,7 @@ export const RecruiterProvider = ({ children }: IDefaultProviderProps) => {
     <RecruiterContext.Provider
       value={{
         profile,
+        getRecruiterProfileAll,
         createPerfilRecruiter,
         getRecruiterProfile,
         updateRecruiterProfile,
