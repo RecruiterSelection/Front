@@ -7,11 +7,9 @@ import {
   IPerfilCandidate,
   IPerfilCandidateWithEmail,
   IPerfilContext,
-  IUpdatePerfilCandidate,
   TUpdatePerfilCandidate,
 } from "./interface";
 import { useNavigate } from "react-router-dom";
-
 
 export const CandidateContext = createContext({} as IPerfilContext);
 

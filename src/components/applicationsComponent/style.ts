@@ -9,7 +9,7 @@ export const StyledApplicationsContainer = styled.div`
   background-color: var(--white-fixed);
   border-radius: 12px;
 
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   padding: 30px;
   display: flex;
   flex-direction: column;

@@ -1,8 +1,10 @@
 import { IVacancie } from "../../providers/VacancieContext/types";
 import { ApplyForJobContainer } from "./style";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { ApplyFormComponent } from "./ApplyForm";
+import { ApplicationsContext } from "../../providers/applicationsProvider";
+import { CandidateContext } from "../../providers/user/perfilCandidato/candidatesProvider";
 
 interface IApplyForJobModal {
   vacancies: IVacancie[];
@@ -20,6 +22,10 @@ export const ApplyForJobModal: React.FC<IApplyForJobModal> = ({
   vacancyId,
 }) => {
   const [showApplicationFields, setShowApplicationFields] = useState(false);
+  const { getAllApplications } = useContext(ApplicationsContext);
+  const { getCandidateByEmail, candidateWithEmail } =
+    useContext(CandidateContext);
+  const candidateEmail = localStorage.getItem("@userMail");
 
   const filteredJob = vacancies.filter(
     (vacancy) => vacancy.jobId === vacancyId
