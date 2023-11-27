@@ -66,7 +66,7 @@ export const NavStyled = styled.nav<NavStyledProps>`
     cursor: pointer;
     transition: transform 0.3s;
 
-    &:nth-of-type(3) {
+    &:nth-of-type(2) {
       background-color: var(--brand--brand2);
       padding: 5px;
       border-radius: 5px;
@@ -75,12 +75,14 @@ export const NavStyled = styled.nav<NavStyledProps>`
 
       &:hover {
         transform: scale(1);
+        transition: 0.2s;
         background-color: var(--brand--brand4);
       }
     }
 
     &:hover {
-      transform: scale(1.5);
+      background-color: var(--brand--brand2);
+      transition: 0.2s;
     }
   }
 
@@ -88,7 +90,8 @@ export const NavStyled = styled.nav<NavStyledProps>`
     width: 40%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     position: static;
+    padding-right: 30px;
   }
 `;

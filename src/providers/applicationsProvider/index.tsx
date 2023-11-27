@@ -5,6 +5,7 @@ import {
   IDefaultProviderProps,
 } from "./interfaces";
 import { api } from "../../services/api";
+import { toast } from "react-toastify";
 
 export const ApplicationsContext = createContext({} as IApplicationContext);
 
@@ -27,9 +28,19 @@ export const ApplicationsProvider = ({ children }: IDefaultProviderProps) => {
     }
   };
 
+  const deleteApplication = async (applicationId: number): Promise<void> => {
+    try {
+      await api.delete(`/applications/${applicationId}`);
+      toast.warn("Candidatura retirada.");
+      getAllApplications();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <ApplicationsContext.Provider
-      value={{ getAllApplications, applicationsData }}>
+      value={{ getAllApplications, applicationsData, deleteApplication }}>
       {children}
     </ApplicationsContext.Provider>
   );
