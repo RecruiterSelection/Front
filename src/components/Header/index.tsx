@@ -26,6 +26,10 @@ export const HeaderComponents = () => {
     navigate(path);
   };
 
+  const handleDelete = () => {
+    setModalOpen(<DeleteUserModal />);
+  };
+
   return (
     <HeaderContainerStyled>
       <LogoLinkStyled to="/">
@@ -35,6 +39,7 @@ export const HeaderComponents = () => {
       <NavStyled isVisible={menuIsVisible}>
         {isLoggedIn ? (
           <>
+            <button onClick={() => handleDelete()}>Deletar conta</button>
             <button onClick={() => logoutUser()}>Sair</button>
           </>
         ) : (
