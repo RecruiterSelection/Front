@@ -16,6 +16,11 @@ export const FormStyle = styled.form`
     padding: 10px;
   }
 
+  h2 {
+    font-size: 20px;
+    color: black;
+  }
+
   span {
     color: red;
   }
