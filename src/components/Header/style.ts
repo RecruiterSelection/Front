@@ -56,11 +56,13 @@ export const NavStyled = styled.nav<NavStyledProps>`
     transition: transform 0.3s;
 
     &:hover {
+
       transform: scale(1.2);
     }
 
     .home {
       font-size: 20px;
+
     }
   }
 
@@ -70,7 +72,9 @@ export const NavStyled = styled.nav<NavStyledProps>`
     cursor: pointer;
     transition: transform 0.3s;
 
+
     &:nth-of-type(3) {
+
       background-color: var(--brand--brand2);
       padding: 5px;
       border-radius: 5px;

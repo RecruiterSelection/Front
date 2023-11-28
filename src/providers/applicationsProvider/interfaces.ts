@@ -6,6 +6,12 @@ export interface IApplicationContext {
   getAllApplications: () => Promise<GetManyApplicationsResponse | undefined>;
 
   deleteApplication: (applicationId: number) => Promise<void>;
+
+  createNewApplication: (
+    data: ApplicationData,
+    candidateId: number,
+    jobId: number
+  ) => Promise<CreateNewApplication | undefined>;
 }
 
 export interface IDefaultProviderProps {
@@ -56,4 +62,14 @@ export interface Application {
   jobListingJobId: JobListing;
 }
 
+export type CreateNewApplication = Omit<
+  Application,
+  "candidateProfileId" | "jobListingJobId"
+>;
+
 export type GetManyApplicationsResponse = Application[];
+
+export type ApplicationData = {
+  coverLetter: string;
+  resume: string;
+};

@@ -13,6 +13,7 @@ import { useNavigate } from "react-router";
 import { FaEdit } from "react-icons/fa";
 import { EditCandidateInfoModal } from "../../components/editCandidateInfoModal";
 import { ApplicationsComponent } from "../../components/applicationsComponent";
+import { MatchingJobsComponent } from "../../components/matchingJobsComponent";
 
 export const DashBoarCandidatedPage = () => {
   const { candidateWithEmail, getCandidateByEmail } =
@@ -86,8 +87,7 @@ export const DashBoarCandidatedPage = () => {
                     candidateWithEmail={candidateWithEmail}
                   />
                 )
-              }
-            >
+              }>
               {<FaEdit size="24px" />}
             </div>
           </div>
@@ -95,14 +95,14 @@ export const DashBoarCandidatedPage = () => {
             <button
               onClick={() => {
                 setModalOpen(<SkillsModal />);
-              }}
-            >
+              }}>
               Minhas Habilidades
             </button>
             <button onClick={() => navigate("/vacancies")}>Ver vagas</button>
           </div>
         </StyledUserDataContainer>
         <ApplicationsComponent />
+        <MatchingJobsComponent />
       </StyledDashboardContainer>
 
       <FooterComponent />

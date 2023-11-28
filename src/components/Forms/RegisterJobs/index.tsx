@@ -3,7 +3,7 @@ import { Input } from "../../Input";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { FormStyle } from "./style";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../../providers/user/userProvider";
 import { RecruiterContext } from "../../../providers/user/perfilRecruiter/userProvider";
 import { VacancieContext } from "../../../providers/VacancieContext";

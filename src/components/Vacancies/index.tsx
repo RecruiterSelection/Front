@@ -1,9 +1,13 @@
 import { useContext, useEffect } from "react";
 import { StyledVacanciesContainer, StyledVacancyBox } from "./style";
-import { IVacanciesContext } from "../../providers/VacancieContext/types";
+import {
+  IVacancie,
+  IVacanciesContext,
+} from "../../providers/VacancieContext/types";
 import { VacancieContext } from "../../providers/VacancieContext";
 import { LoginForm } from "../../pages/LoginModal/loginForm";
 import { ModalContext } from "../../providers/modal";
+import { ApplyForJobModal } from "../applyForJobModal";
 
 interface IsearchTerm {
   searchTerm: string;
@@ -37,7 +41,11 @@ export const VacanciesComponent = (props: IsearchTerm) => {
     return text;
   };
 
-  const handleClickLoggedIn = () => {};
+  const handleClickLoggedIn = (vacancies: IVacancie[], vacancyId: number) => {
+    setModalOpen(
+      <ApplyForJobModal vacancies={vacancies} vacancyId={vacancyId} />
+    );
+  };
 
   return (
     <>
@@ -59,7 +67,7 @@ export const VacanciesComponent = (props: IsearchTerm) => {
               );
             })
             .map((vacancy, index) => (
-              <StyledVacancyBox key={index}>
+              <StyledVacancyBox key={index} id={vacancy.jobId.toString()}>
                 <h2>{vacancy.title}</h2>
                 <div className="jobType_wrapper">
                   <small>{formatJobType(vacancy.jobType)}</small>
@@ -75,13 +83,19 @@ export const VacanciesComponent = (props: IsearchTerm) => {
                 </div>
                 <div className="button_wrapper">
                   {isLoggedIn ? (
-                    <button className="vacancy_button"> Candidatar-se </button>
+                    <button
+                      className="vacancy_button"
+                      onClick={() =>
+                        handleClickLoggedIn(vacancies, vacancy.jobId)
+                      }>
+                      {" "}
+                      Candidatar-se{" "}
+                    </button>
                   ) : (
                     <button
                       className="vacancy_button"
                       onClick={() => setModalOpen(<LoginForm />)}>
-                      {" "}
-                      Ver mais{" "}
+                      Ver mais
                     </button>
                   )}
                 </div>
