@@ -56,7 +56,8 @@ export const NavStyled = styled.nav<NavStyledProps>`
     transition: transform 0.3s;
 
     &:hover {
-      transform: scale(1.5);
+      transition: 0.2s;
+      background-color: var(--brand--brand4);
     }
   }
 
@@ -66,7 +67,7 @@ export const NavStyled = styled.nav<NavStyledProps>`
     cursor: pointer;
     transition: transform 0.3s;
 
-    &:nth-of-type(2) {
+    &:nth-of-type() {
       background-color: var(--brand--brand2);
       padding: 5px;
       border-radius: 5px;

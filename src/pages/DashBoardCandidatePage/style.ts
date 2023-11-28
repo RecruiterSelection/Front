@@ -19,7 +19,7 @@ export const StyledUserDataContainer = styled.div`
   border-radius: 12px;
 
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   padding: 30px;
 
   display: flex;
