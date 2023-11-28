@@ -29,7 +29,7 @@ export const CandidateProvider = ({ children }: IDefaultProviderProps) => {
       .then((res) => {
         setProfile(res.data);
         toast.success("Perfil criado com succeso!");
-        navigate("/Dashboard");
+        navigate("/dashBoard");
       })
       .catch((err) => console.error(err));
   };

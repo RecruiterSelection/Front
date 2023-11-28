@@ -105,7 +105,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
 
         getUserProfile(res.data.userId);
 
-        navigate("/Dashboard");
+        navigate("/dashBoard");
         toast.success("Login realizado com sucesso!");
       })
       .catch((err) => {
