@@ -1,10 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import {
   JobCard,
-  JobDescription,
   JobSkillItem,
   JobSkillList,
-  JobTitle,
   MatchingJobsContainer,
 } from "./style";
 import { CandidateContext } from "../../providers/user/perfilCandidato/candidatesProvider";

@@ -1,9 +1,7 @@
 import { FooterComponent } from "../../components/Footer";
 import { StyledDashboardContainer, StyledUserDataContainer } from "./style";
 import { useContext, useEffect } from "react";
-import { CSSTransition } from "react-transition-group";
 import avatar from "../../assets/avator-img.jpg";
-import { TechSkillsContext } from "../../providers/techSkillsProvider";
 import { CandidateTechSkillsContext } from "../../providers/candidateTechSkillProvider";
 import { CandidateContext } from "../../providers/user/perfilCandidato/candidatesProvider";
 import { ModalContext } from "../../providers/modal";

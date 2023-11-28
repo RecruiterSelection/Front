@@ -11,7 +11,8 @@ import { ProtectedLayout } from "./protectedLayout";
 import { ContactPage } from "../pages/Contact";
 import { DashBoarCandidatedPage } from "../pages/DashBoardCandidatePage";
 import { ResetPasswordPage } from "../pages/ResetPassword";
-import { VacanciesPageCreat } from "../pages/VacanciesCreat";
+import { VacanciesPageCreat } from "../pages/VacanciesCreate";
+import { DashboardRecruiter } from "../pages/DashboardRecruiterPage";
 
 export const RoutesMain = () => {
   const { modalOpen } = useContext(ModalContext);
@@ -26,9 +27,16 @@ export const RoutesMain = () => {
         <Route path="/vacancies" element={<VacanciesPage />} />
         <Route element={<ProtectedRoute />}>
           <Route element={<ProtectedLayout />}>
-            <Route path="/dashBoard" element={<DashBoarCandidatedPage />} />
+            <Route
+              path="/dashboard-candidate"
+              element={<DashBoarCandidatedPage />}
+            />
+            <Route
+              path="/dashboard-recruiter"
+              element={<DashboardRecruiter />}
+            />
             <Route path="/perfil" element={<PerfilPage />} />
-            <Route path="/vacancies/creat" element={<VacanciesPageCreat />} />
+            <Route path="/vacancies/create" element={<VacanciesPageCreat />} />
           </Route>
         </Route>
         <Route path="/resetPassword/:token" element={<ResetPasswordPage />} />

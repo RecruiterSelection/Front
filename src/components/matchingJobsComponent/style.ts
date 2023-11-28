@@ -31,7 +31,7 @@ export const JobCard = styled.div`
 export const JobSkillList = styled.ul`
   list-style-type: none;
   padding: 0;
-  /* width: 100%; */
+
   display: flex;
   flex-wrap: wrap;
 `;
