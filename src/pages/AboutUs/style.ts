@@ -5,7 +5,9 @@ export const MainStyled = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
+
+  min-height: 100vh;
+  margin-bottom: -50px;
 
   @media (min-width: 1024px) {
     flex-direction: row;
@@ -74,5 +76,12 @@ export const SectionStyled = styled.div`
       border-radius: 4px;
       border: none;
     }
+  }
+`;
+
+export const FooterWrapper = styled.div`
+  @media (max-width: 1024px) {
+    position: relative;
+    height: 50px;
   }
 `;

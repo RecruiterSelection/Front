@@ -1,7 +1,7 @@
 import aboutus from "../../assets/aboutus.svg";
 import { FooterComponent } from "../../components/Footer";
 import { HeaderComponents } from "../../components/Header";
-import { DivStyled, MainStyled, SectionStyled } from "./style";
+import { DivStyled, FooterWrapper, MainStyled, SectionStyled } from "./style";
 
 export const AboutUsPage = () => {
   return (
@@ -61,7 +61,9 @@ export const AboutUsPage = () => {
           </p>
         </SectionStyled>
       </MainStyled>
-      <FooterComponent />
+      <FooterWrapper>
+        <FooterComponent />
+      </FooterWrapper>
     </>
   );
 };
