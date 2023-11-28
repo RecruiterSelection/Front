@@ -10,9 +10,13 @@ import { ModalContext } from "../../providers/modal";
 import { useContext } from "react";
 import { LoginForm } from "../LoginModal/loginForm";
 import { FooterComponent } from "../../components/Footer";
+import { UserContext } from "../../providers/user/userProvider";
 
 export const HomePage = () => {
   const { setModalOpen } = useContext(ModalContext);
+  const { logoutUser } = useContext(UserContext)
+  const token = localStorage.getItem("@TOKEN");
+  const isLoggedIn = !!token;
 
   return (
     <>
@@ -29,9 +33,13 @@ export const HomePage = () => {
               <p>as melhores vagas e faça sua carreira decolar</p>
             </ContainerPhrase>
             <ContainerButton>
-              <button onClick={() => setModalOpen(<LoginForm />)}>
-                ENTRAR
-              </button>
+              {isLoggedIn ? (
+                <button onClick={() => logoutUser()}>SAIR</button>
+              ) : (
+                <button onClick={() => setModalOpen(<LoginForm />)}>
+                  ENTRAR
+                </button>
+              )}
             </ContainerButton>
           </SectionStyled>
         </div>

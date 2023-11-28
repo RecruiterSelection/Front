@@ -8,6 +8,7 @@ import { RiMenuFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../providers/user/userProvider";
 import { DeleteUserModal } from "../Modal/DeleteUser";
+import { IoHomeSharp } from "react-icons/io5";
 
 export const HeaderComponents = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
@@ -30,6 +31,20 @@ export const HeaderComponents = () => {
     setModalOpen(<DeleteUserModal />);
   };
 
+  const handleProfileClick = async () => {
+    setTimeout(() => {
+      navigate("/dashBoard");
+    }, 0);
+  };
+
+  const renderHomeLink = () => {
+    if (window.location.pathname === "/dashBoard") {
+      return <IoHomeSharp className="home" />;
+    } else if (window.location.pathname === "/") {
+      return <span onClick={handleProfileClick}>PERFIL</span>;
+    }
+  };
+
   return (
     <HeaderContainerStyled>
       <LogoLinkStyled to="/">
@@ -39,8 +54,12 @@ export const HeaderComponents = () => {
       <NavStyled isVisible={menuIsVisible}>
         {isLoggedIn ? (
           <>
-            <button onClick={() => handleDelete()}>Deletar conta</button>
-            <button onClick={() => logoutUser()}>Sair</button>
+            <Link to="/" onClick={() => navigate("/")}>
+              {renderHomeLink()}
+            </Link>
+            <button onClick={() => navigateTo("/vacancies")}>VAGAS</button>
+            <button onClick={() => handleDelete()}>DELETAR CONTA</button>
+            <button onClick={() => logoutUser()}>SAIR</button>
           </>
         ) : (
           <>
